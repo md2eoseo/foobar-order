@@ -1,10 +1,12 @@
 import React from "react";
-import Items from "./Items";
+import Item from "./Item";
 
-export default function () {
+export default function (props) {
   return (
-    <div>
-      <Items />
+    <div className="List">
+      {props.data.map((datum) => (
+        <Item key={datum.name} item={datum} />
+      ))}
     </div>
   );
 }

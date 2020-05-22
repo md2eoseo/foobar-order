@@ -2,8 +2,11 @@ import React from "react";
 
 export default function Checkout() {
   return (
-    <div>
-      <button>Proceed to checkout</button>
-    </div>
+    <>
+      {/* TODO: make onClick function on button to proceed to payment form */}
+      <div>Total Beers:3</div>
+      <div>Total Price:39,00kr</div>
+      <button className="Checkout">Proceed to checkout</button>
+    </>
   );
 }

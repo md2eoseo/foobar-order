@@ -1,14 +1,14 @@
 import React from "react";
-import CartList from "./CartList";
+import Order from "./Order";
 import Checkout from "./Checkout";
 
-function Cart(props) {
+export default function Cart(props) {
   return (
-    <div>
-      <CartList />
+    <div className="Cart">
+      {props.orders.map((order) => (
+        <Order />
+      ))}
       <Checkout />
     </div>
   );
 }
-
-export default Cart;
