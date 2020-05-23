@@ -3,7 +3,6 @@ import Cart from "./component/Cart";
 import List from "./component/List";
 
 const endpoint = "https://sojuapp.herokuapp.com/";
-let beerData = [];
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -18,11 +17,71 @@ export default function App() {
   }
 
   // TODO: make function for passing the orders state
+  function onClickAdd(name) {
+    const new_orders = [...orders];
+    let i = 0;
+    for (i = 0; i < new_orders.length; i++) {
+      if (new_orders[i].name === name) {
+        new_orders[i].quantity += 1;
+        break;
+      }
+    }
+    if (i === new_orders.length) {
+      new_orders.push({ name: name, quantity: 1 });
+    }
+    setOrders(new_orders);
+  }
+
+  function onClickDetail(desc) {
+    console.log(desc);
+  }
+
+  function onClickDelete(name) {
+    const new_orders = [...orders];
+    let i = 0;
+    for (i = 0; i < new_orders.length; i++) {
+      if (new_orders[i].name === name) {
+        new_orders.splice(i, 1);
+        break;
+      }
+    }
+    setOrders(new_orders);
+  }
+
+  function onClickEditQuantity(name, operand) {
+    const new_orders = [...orders];
+    let i = 0;
+    for (i = 0; i < new_orders.length; i++) {
+      if (new_orders[i].name === name) {
+        if (new_orders[i].quantity + operand < 1)
+          // delete after clicking minus button when the quantity is 1 or just stay
+          console.log("Quantity is already 1");
+        else {
+          new_orders[i].quantity += operand;
+          setOrders(new_orders);
+        }
+        break;
+      }
+    }
+  }
+
+  function getLabelByName(name) {
+    let label = "";
+    data.forEach((datum) => {
+      if (name === datum.name) label = datum.label;
+    });
+    return label;
+  }
 
   return (
     <div className="App">
-      <List data={data} />
-      <Cart orders={orders} />
+      <List data={data} onClickAdd={onClickAdd} onClickDetail={onClickDetail} />
+      <Cart
+        orders={orders}
+        onClickDelete={onClickDelete}
+        onClickEditQuantity={onClickEditQuantity}
+        getLabelByName={getLabelByName}
+      />
     </div>
   );
 }
