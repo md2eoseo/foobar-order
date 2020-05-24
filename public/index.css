@@ -122,6 +122,32 @@
   background-color: gray;
 }
 
+/* Payment.js */
+.Payment {
+  background-color: #fff;
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  left: -70%;
+  z-index: 1;
+  transition: ease 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentBtn {
+  width: 10rem;
+  height: 10rem;
+  background-color: #ccc;
+  border: 5px outset;
+  border-radius: 1rem;
+}
+
+.onPayment {
+  left: 0;
+}
+
 /* Cart.js */
 .Cart {
   width: var(--cart-width);

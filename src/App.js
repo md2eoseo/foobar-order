@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Cart from "./component/Cart";
 import List from "./component/List";
+import Payment from "./component/Payment";
 
 const endpoint = "https://sojuapp.herokuapp.com/";
 
 export default function App() {
+  const refPayment = useRef(null);
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
 
@@ -73,14 +75,21 @@ export default function App() {
     return label;
   }
 
+  function showUpPayment() {
+    // console.log(refPayment);
+    refPayment.current.classList.toggle("onPayment");
+  }
+
   return (
     <div className="App">
       <List data={data} onClickAdd={onClickAdd} onClickDetail={onClickDetail} />
+      <Payment ref={refPayment} orders={orders} />
       <Cart
         orders={orders}
         onClickDelete={onClickDelete}
         onClickEditQuantity={onClickEditQuantity}
         getLabelByName={getLabelByName}
+        showUpPayment={showUpPayment}
       />
     </div>
   );

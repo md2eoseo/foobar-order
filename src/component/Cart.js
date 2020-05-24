@@ -12,6 +12,7 @@ export default function Cart({
   onClickDelete,
   onClickEditQuantity,
   getLabelByName,
+  showUpPayment,
 }) {
   const [totalBeer, setTotalBeer] = useState(0);
   const [price, setPrice] = useState(0);
@@ -56,7 +57,11 @@ export default function Cart({
         )}
       </div>
 
-      <Checkout totalBeer={totalBeer} price={price} />
+      <Checkout
+        totalBeer={totalBeer}
+        price={price}
+        showUpPayment={showUpPayment}
+      />
     </div>
   );
 }
