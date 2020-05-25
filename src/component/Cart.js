@@ -7,13 +7,10 @@ import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
 const DISCOUNT_RATE = 0.75;
 const isDiscount = false;
 
-export default function Cart({
-  orders,
-  onClickDelete,
-  onClickEditQuantity,
-  getLabelByName,
-  showUpPayment,
-}) {
+function Cart(
+  { orders, onClickDelete, onClickEditQuantity, getLabelByName, showUpPayment },
+  ref
+) {
   const [totalBeer, setTotalBeer] = useState(0);
   const [price, setPrice] = useState(0);
 
@@ -45,9 +42,10 @@ export default function Cart({
         {orders.length === 0 ? (
           <h2 className="pleaseAddText">Add beers as much as you can drink</h2>
         ) : (
-          orders.map((order) => (
+          orders.map((order, idx) => (
             <Order
               key={order.name}
+              ref={ref}
               {...order}
               onClickDelete={onClickDelete}
               onClickEditQuantity={onClickEditQuantity}
@@ -65,3 +63,5 @@ export default function Cart({
     </div>
   );
 }
+
+export default React.forwardRef(Cart);

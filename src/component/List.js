@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./Item";
 import logo from "../images/logo.svg";
 
-export default function ({ data, onClickAdd, onClickDetail }) {
+export default function List({ data, onClickAdd, onClickDetail }) {
   return (
     <div className="List">
       <div className="logo">

@@ -91,7 +91,6 @@
 
 .item_img {
   justify-self: center;
-  /* width: 90%; */
   height: 200px;
 }
 
@@ -127,7 +126,7 @@
   background-color: #fff;
   width: 70%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   left: -70%;
   z-index: 1;
   transition: ease 0.5s;
@@ -137,11 +136,27 @@
 }
 
 .paymentBtn {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
+  margin: 1rem;
   background-color: #ccc;
   border: 5px outset;
   border-radius: 1rem;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentBtn > img {
+  width: 70%;
+}
+
+.paymentBtn > div {
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .onPayment {
@@ -157,6 +172,7 @@
   position: fixed;
   left: 70%;
   overflow: scroll;
+  background-color: #fff;
 }
 
 .Cart_label {
@@ -214,7 +230,9 @@
 .order_edit {
   justify-content: space-between;
 }
-
+.order_edit button {
+  cursor: pointer;
+}
 .order_edit_quantity {
   width: 25%;
   display: flex;
@@ -330,6 +348,7 @@
   background-color: #00ff00;
   outline: none;
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .checkoutBtn:disabled {
@@ -352,4 +371,8 @@
 /* Hide scrollbar for IE and Edge */
 * {
   -ms-overflow-style: none;
+}
+
+.hidden {
+  display: none;
 }

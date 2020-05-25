@@ -7,13 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const images = require.context("../images/", true);
 
-export default function Order({
-  name,
-  quantity,
-  onClickDelete,
-  onClickEditQuantity,
-  getLabelByName,
-}) {
+function Order(
+  { name, quantity, onClickDelete, onClickEditQuantity, getLabelByName },
+  ref
+) {
   return (
     <div className="Order">
       <div className="order_info">
@@ -27,6 +24,7 @@ export default function Order({
       </div>
       <div className="order_edit">
         <button
+          ref={ref}
           className="order_deleteBtn"
           onClick={() => {
             onClickDelete(name);
@@ -58,3 +56,5 @@ export default function Order({
     </div>
   );
 }
+
+export default React.forwardRef(Order);
