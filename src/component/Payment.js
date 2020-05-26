@@ -48,12 +48,6 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
             />
           ))}
         </div>
-
-        {/* <Checkout
-          totalBeer={totalBeer}
-          price={price}
-          showUpPayment={showUpPayment}
-        /> */}
       </div>
     </>
   );

@@ -176,7 +176,9 @@
 }
 
 .paymentSummary {
+  overflow: scroll;
   background-color: #fff;
+  padding-top: 5%;
   width: 30%;
   height: 85%;
   position: fixed;
@@ -186,6 +188,10 @@
 }
 
 .paymentSummary_label {
+  position: fixed;
+  top: 0;
+  width: var(--cart-width);
+  height: var(--cart-label-height);
   padding: 10px;
   margin-bottom: 0;
   background: -moz-linear-gradient(
@@ -237,6 +243,12 @@
 }
 .backToMainBtn:hover {
   background-color: #eee;
+}
+
+/* OrderInfo.js */
+.OrderInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Cart.js */
@@ -436,6 +448,7 @@
   outline: none;
   transition: 0.5s;
   cursor: pointer;
+  z-index: 5;
 }
 
 .checkoutBtn:disabled {
