@@ -26,12 +26,12 @@ export default function App() {
     let i = 0;
     for (i = 0; i < new_orders.length; i++) {
       if (new_orders[i].name === name) {
-        new_orders[i].quantity += 1;
+        new_orders[i].amount += 1;
         break;
       }
     }
     if (i === new_orders.length) {
-      new_orders.push({ name: name, quantity: 1 });
+      new_orders.push({ name: name, amount: 1 });
     }
     setOrders(new_orders);
   }
@@ -57,11 +57,11 @@ export default function App() {
     let i = 0;
     for (i = 0; i < new_orders.length; i++) {
       if (new_orders[i].name === name) {
-        if (new_orders[i].quantity + operand < 1)
+        if (new_orders[i].amount + operand < 1)
           // delete after clicking minus button when the quantity is 1 or just stay
           console.log("Quantity is already 1");
         else {
-          new_orders[i].quantity += operand;
+          new_orders[i].amount += operand;
           setOrders(new_orders);
         }
         break;
@@ -88,6 +88,30 @@ export default function App() {
     refCheckoutBtn.current.classList.remove("onPayment");
   }
 
+  function completePayment() {
+    sendOrder(orders);
+  }
+
+  function sendOrder() {
+    const postData = JSON.stringify(orders);
+    fetch(endpoint + "order", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: postData,
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        else console.log("post failed!");
+      })
+      .then((data) => {
+        console.log(data);
+        hidePayment();
+        setOrders([]);
+      });
+  }
+
   return (
     <div className="App">
       <List data={data} onClickAdd={onClickAdd} onClickDetail={onClickDetail} />
@@ -96,6 +120,7 @@ export default function App() {
         orders={orders}
         getLabelByName={getLabelByName}
         hidePayment={hidePayment}
+        completePayment={completePayment}
       />
       <Cart
         ref={refCheckoutBtn}

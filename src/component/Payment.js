@@ -10,11 +10,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // https://stackoverflow.com/questions/61192450/useref-hook-on-a-custom-component
-function Payment({ orders, getLabelByName, hidePayment }, ref) {
+function Payment(
+  { orders, getLabelByName, hidePayment, completePayment },
+  ref
+) {
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
   const { refPayment, refPaymentSummary } = ref;
   const refPaymentBtns = useRef(null);
   const refBackToSelectBtn = useRef(null);
+  const refPaymentText = useRef(null);
+  const refPaymentDetails = useRef(null);
   const refPaymentDetailMobilepay = useRef(null);
   const refPaymentDetailCreditcard = useRef(null);
   const refPaymentDetailCash = useRef(null);
@@ -22,6 +27,8 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
   function goToPaymentDetail(payment) {
     refPaymentBtns.current.classList.add("hidden");
     refBackToSelectBtn.current.classList.remove("hidden");
+    refPaymentText.current.classList.add("hidden");
+    refPaymentDetails.current.classList.remove("hidden");
 
     if (payment === "mobilepay") {
       refPaymentDetailMobilepay.current.classList.remove("hidden");
@@ -38,6 +45,8 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
     refPaymentDetailMobilepay.current.classList.add("hidden");
     refPaymentDetailCreditcard.current.classList.add("hidden");
     refPaymentDetailCash.current.classList.add("hidden");
+    refPaymentText.current.classList.remove("hidden");
+    refPaymentDetails.current.classList.add("hidden");
   }
 
   return (
@@ -53,7 +62,9 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
         >
           <FontAwesomeIcon icon={faLongArrowAltLeft} />
         </button>
-        <div className="paymentText">Select the Payment.</div>
+        <div ref={refPaymentText} className="paymentText">
+          Select the Payment.
+        </div>
         <div ref={refPaymentBtns} className="paymentBtns">
           <button
             className="paymentBtn mobilepay"
@@ -76,7 +87,7 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
             <div>Cash</div>
           </button>
         </div>
-        <div className="paymentDetails">
+        <div ref={refPaymentDetails} className="paymentDetails hidden">
           <div
             ref={refPaymentDetailMobilepay}
             className="paymentDetail mobilepay hidden"
@@ -90,7 +101,21 @@ function Payment({ orders, getLabelByName, hidePayment }, ref) {
             creditcard
           </div>
           <div ref={refPaymentDetailCash} className="paymentDetail cash hidden">
-            cash
+            <div className="text">Are you sure paying with cash?</div>
+            <div className="btns">
+              <button className="noBtn" onClick={goBackToSelect}>
+                No
+              </button>
+              <button
+                className="yesBtn"
+                onClick={() => {
+                  completePayment();
+                  goBackToSelect();
+                }}
+              >
+                Yes
+              </button>
+            </div>
           </div>
         </div>
       </div>

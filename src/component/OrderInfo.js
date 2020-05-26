@@ -1,7 +1,7 @@
 import React from "react";
 const images = require.context("../images/", true);
 
-export default function OrderInfo({ name, quantity, getLabelByName }, ref) {
+export default function OrderInfo({ name, amount, getLabelByName }, ref) {
   return (
     <div className="Order">
       <div className="order_info">
@@ -13,7 +13,7 @@ export default function OrderInfo({ name, quantity, getLabelByName }, ref) {
         <div className="order_name">{name} </div>
         <div className="order_price"></div>
       </div>
-      <div className="order_quantity">39,00kr x {quantity}🍺</div>
+      <div className="order_quantity">39,00kr x {amount}🍺</div>
       <hr />
     </div>
   );

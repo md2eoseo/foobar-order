@@ -19,7 +19,7 @@ function Cart(
 
   function calculateTotalBeer() {
     let num = 0;
-    orders.forEach((order) => (num += order.quantity));
+    orders.forEach((order) => (num += order.amount));
     setTotalBeer(num);
   }
 
@@ -27,8 +27,8 @@ function Cart(
     let num = 0;
     orders.forEach((order) => {
       !isDiscount
-        ? (num += order.quantity * 39)
-        : (num += order.quantity * 39 * DISCOUNT_RATE);
+        ? (num += order.amount * 39)
+        : (num += order.amount * 39 * DISCOUNT_RATE);
     });
     setPrice(num);
   }

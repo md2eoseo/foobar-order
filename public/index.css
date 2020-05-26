@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+  outline: none;
+}
+
 /* Add custom properties */
 :root {
   --list-width: 70%;
@@ -112,11 +117,9 @@
   border: 0;
   background-color: transparent;
   justify-self: center;
-  outline: none;
   transition: 1s;
 }
 .item_btns > *:hover {
-  cursor: pointer;
   border-bottom: 2px solid black;
   background-color: gray;
 }
@@ -132,6 +135,7 @@
   transition: ease 0.5s;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -154,8 +158,6 @@
   background-color: #ccc;
   border: 5px outset;
   border-radius: 1rem;
-  cursor: pointer;
-  outline: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -239,8 +241,6 @@
   padding: 4px 10px;
   background-color: transparent;
   font-size: 3rem;
-  outline: none;
-  cursor: pointer;
 }
 .backToMainBtn:hover,
 .backToSelectBtn:hover {
@@ -249,6 +249,46 @@
 
 .backToSelectBtn {
   z-index: 2;
+}
+
+.paymentDetails {
+  width: 80%;
+  height: 70%;
+  border: 1px solid black;
+}
+
+.paymentDetail {
+  width: 100%;
+  height: 100%;
+}
+
+.paymentDetail.cash {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.paymentDetail.cash .text {
+  margin-bottom: 5rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.paymentDetail.cash .btns > * {
+  margin: 0 1.5rem;
+  padding: 0.3em 0.8em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.2em;
+  box-shadow: 0 0.05em 0.25em rgba(0, 0, 0, 0.5);
+  text-shadow: 0 -0.05em 0.05em rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 125%;
+  line-height: 1.5;
+}
+.yesBtn {
+  background-color: #6b0;
+}
+.noBtn {
+  background-color: #c00;
 }
 
 /* OrderInfo.js */
@@ -335,9 +375,6 @@
 .order_edit {
   justify-content: space-between;
 }
-.order_edit button {
-  cursor: pointer;
-}
 .order_edit_quantity {
   width: 25%;
   display: flex;
@@ -368,7 +405,6 @@
   border-radius: 10px;
   background-color: #cc0000;
   justify-self: center;
-  outline: none;
   transition: 0.5s;
 }
 
@@ -381,7 +417,6 @@
   font-size: 2rem;
   border: 0;
   background-color: transparent;
-  outline: none;
   transition: 0.5s;
 }
 .order_minusBtn:hover {
@@ -392,7 +427,6 @@
   font-size: 2rem;
   border: 0;
   background-color: transparent;
-  outline: none;
   transition: 0.5s;
 }
 .order_plusBtn:hover {
@@ -451,9 +485,7 @@
   border: 0;
   border-radius: 20px;
   background-color: #00ff00;
-  outline: none;
   transition: 0.5s;
-  cursor: pointer;
   z-index: 5;
 }
 

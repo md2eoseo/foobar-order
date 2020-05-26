@@ -8,7 +8,7 @@ import {
 const images = require.context("../images/", true);
 
 function Order(
-  { name, quantity, onClickDelete, onClickEditQuantity, getLabelByName },
+  { name, amount, onClickDelete, onClickEditQuantity, getLabelByName },
   ref
 ) {
   return (
@@ -41,7 +41,7 @@ function Order(
           >
             <FontAwesomeIcon icon={faMinusSquare} />
           </button>
-          <div className="order_quantity">{quantity}</div>
+          <div className="order_quantity">{amount}</div>
           <button
             className="order_plusBtn"
             onClick={() => {
