@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export default function Checkout({ totalBeer, price, showUpPayment }) {
+  const refCheckoutBtn = useRef(null);
+
+  function changeTextOnBtn() {
+    refCheckoutBtn.current.classList.toggle("onPayment");
+  }
+
   return (
     <div className="Checkout">
       {/* TODO: make onClick function on button to proceed to payment form */}
@@ -9,7 +15,14 @@ export default function Checkout({ totalBeer, price, showUpPayment }) {
           Add Items
         </button>
       ) : (
-        <button className="checkoutBtn" onClick={showUpPayment}>
+        <button
+          ref={refCheckoutBtn}
+          className="checkoutBtn"
+          onClick={() => {
+            showUpPayment();
+            changeTextOnBtn();
+          }}
+        >
           Checkout {price}kr
         </button>
       )}

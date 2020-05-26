@@ -7,6 +7,7 @@ const endpoint = "https://sojuapp.herokuapp.com/";
 
 export default function App() {
   const refPayment = useRef(null);
+  const refPaymentSummary = useRef(null);
   const refDeleteBtn = useRef([]);
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -78,13 +79,18 @@ export default function App() {
 
   function showUpPayment() {
     refPayment.current.classList.toggle("onPayment");
+    refPaymentSummary.current.classList.toggle("onPayment");
     // refDeleteBtn.current.classList.toggle("hidden");
   }
 
   return (
     <div className="App">
       <List data={data} onClickAdd={onClickAdd} onClickDetail={onClickDetail} />
-      <Payment ref={refPayment} orders={orders} />
+      <Payment
+        ref={{ refPayment, refPaymentSummary }}
+        orders={orders}
+        getLabelByName={getLabelByName}
+      />
       <Cart
         ref={refDeleteBtn}
         orders={orders}

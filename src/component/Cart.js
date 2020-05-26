@@ -40,7 +40,11 @@ function Cart(
       </h1>
       <div className="orders">
         {orders.length === 0 ? (
-          <h2 className="pleaseAddText">Add beers as much as you can drink</h2>
+          <div className="pleaseAddText">
+            Add beers
+            <br />
+            as much as you can drink...
+          </div>
         ) : (
           orders.map((order, idx) => (
             <Order

@@ -131,6 +131,18 @@
   z-index: 1;
   transition: ease 0.5s;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentText {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 6rem;
+}
+
+.paymentBtns {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -150,6 +162,10 @@
   align-items: center;
 }
 
+.paymentBtn:active {
+  border: 5px inset;
+}
+
 .paymentBtn > img {
   width: 70%;
 }
@@ -159,8 +175,51 @@
   font-weight: 600;
 }
 
-.onPayment {
+.paymentSummary {
+  background-color: #fff;
+  width: 30%;
+  height: 85%;
+  position: fixed;
+  right: -30%;
+  z-index: 1;
+  transition: ease 0.5s;
+}
+
+.paymentSummary_label {
+  padding: 10px;
+  margin-bottom: 0;
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 243, 243, 1) 50%,
+    rgba(237, 237, 237, 1) 51%,
+    rgba(248, 248, 248, 1) 80%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 243, 243, 1) 50%,
+    rgba(237, 237, 237, 1) 51%,
+    rgba(248, 248, 248, 1) 80%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 243, 243, 1) 50%,
+    rgba(237, 237, 237, 1) 51%,
+    rgba(248, 248, 248, 1) 80%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.Payment.onPayment {
   left: 0;
+}
+.paymentSummary.onPayment {
+  right: 0;
 }
 
 /* Cart.js */
@@ -213,6 +272,17 @@
     rgba(255, 255, 255, 0) 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.pleaseAddText {
+  text-align: center;
+  margin: 30% 0;
+  padding: 12% 3%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: 3px outset;
+  border-radius: 50px;
+  background-color: #ccc;
 }
 
 /* Order.js */
@@ -361,6 +431,11 @@
 .checkoutBtn:hover {
   background-color: #00cc00;
 }
+
+.checkoutBtn.onPayment {
+  background-color: #c00;
+}
+
 /* media queries */
 
 /* Hide scrollbar for Chrome, Safari and Opera */
