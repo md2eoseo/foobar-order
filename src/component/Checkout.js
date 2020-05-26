@@ -1,12 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 
-export default function Checkout({ totalBeer, price, showUpPayment }) {
-  const refCheckoutBtn = useRef(null);
-
-  function changeTextOnBtn() {
-    refCheckoutBtn.current.classList.toggle("onPayment");
-  }
-
+function Checkout({ totalBeer, price, showUpPayment }, ref) {
   return (
     <div className="Checkout">
       {/* TODO: make onClick function on button to proceed to payment form */}
@@ -16,11 +10,10 @@ export default function Checkout({ totalBeer, price, showUpPayment }) {
         </button>
       ) : (
         <button
-          ref={refCheckoutBtn}
+          ref={ref}
           className="checkoutBtn"
           onClick={() => {
             showUpPayment();
-            changeTextOnBtn();
           }}
         >
           Checkout {price}kr
@@ -29,3 +22,5 @@ export default function Checkout({ totalBeer, price, showUpPayment }) {
     </div>
   );
 }
+
+export default React.forwardRef(Checkout);

@@ -4,16 +4,22 @@ import mobilepayImg from "../images/payment/m-pay.png";
 import creditcardImg from "../images/payment/c-card.png";
 import cashImg from "../images/payment/cash.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartArrowDown,
+  faLongArrowAltLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 // https://stackoverflow.com/questions/61192450/useref-hook-on-a-custom-component
-function Payment({ orders, getLabelByName }, ref) {
+function Payment({ orders, getLabelByName, hidePayment }, ref) {
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
   const { refPayment, refPaymentSummary } = ref;
 
   return (
     <>
       <div ref={refPayment} className="Payment">
+        <button className="backToMainBtn" onClick={hidePayment}>
+          <FontAwesomeIcon icon={faLongArrowAltLeft} />
+        </button>
         <div className="paymentText">Select the Payment.</div>
         <div className="paymentBtns">
           <button className="paymentBtn mobilepay">

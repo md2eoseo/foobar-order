@@ -222,6 +222,23 @@
   right: 0;
 }
 
+.backToMainBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 0;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 4px 10px;
+  background-color: transparent;
+  font-size: 3rem;
+  outline: none;
+  cursor: pointer;
+}
+.backToMainBtn:hover {
+  background-color: #eee;
+}
+
 /* Cart.js */
 .Cart {
   width: var(--cart-width);
@@ -423,17 +440,23 @@
 
 .checkoutBtn:disabled {
   background-color: #ccc;
+  cursor: default;
 }
 .checkoutBtn:disabled:hover {
   background-color: #ccc;
+  cursor: default;
 }
 
 .checkoutBtn:hover {
-  background-color: #00cc00;
+  background-color: #0c0;
 }
 
 .checkoutBtn.onPayment {
-  background-color: #c00;
+  background-color: transparent;
+  border-bottom: 3px solid black;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  cursor: default;
 }
 
 /* media queries */

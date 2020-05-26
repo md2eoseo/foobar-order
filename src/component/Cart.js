@@ -49,7 +49,6 @@ function Cart(
           orders.map((order, idx) => (
             <Order
               key={order.name}
-              ref={ref}
               {...order}
               onClickDelete={onClickDelete}
               onClickEditQuantity={onClickEditQuantity}
@@ -60,6 +59,7 @@ function Cart(
       </div>
 
       <Checkout
+        ref={ref}
         totalBeer={totalBeer}
         price={price}
         showUpPayment={showUpPayment}
