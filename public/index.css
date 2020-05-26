@@ -228,7 +228,8 @@
   right: 0;
 }
 
-.backToMainBtn {
+.backToMainBtn,
+.backToSelectBtn {
   position: absolute;
   left: 0;
   top: 0;
@@ -241,8 +242,13 @@
   outline: none;
   cursor: pointer;
 }
-.backToMainBtn:hover {
+.backToMainBtn:hover,
+.backToSelectBtn:hover {
   background-color: #eee;
+}
+
+.backToSelectBtn {
+  z-index: 2;
 }
 
 /* OrderInfo.js */
