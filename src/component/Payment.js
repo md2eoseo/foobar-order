@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartArrowDown,
   faLongArrowAltLeft,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
 // https://stackoverflow.com/questions/61192450/useref-hook-on-a-custom-component
@@ -53,7 +54,7 @@ function Payment(
     <>
       <div ref={refPayment} className="Payment">
         <button className="backToMainBtn" onClick={hidePayment}>
-          <FontAwesomeIcon icon={faLongArrowAltLeft} />
+          <FontAwesomeIcon icon={faTimes} />
         </button>
         <button
           ref={refBackToSelectBtn}

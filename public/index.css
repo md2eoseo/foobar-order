@@ -241,10 +241,12 @@ button {
   padding: 4px 10px;
   background-color: transparent;
   font-size: 3rem;
+  background-color: #fff;
 }
 .backToMainBtn:hover,
 .backToSelectBtn:hover {
   background-color: #eee;
+  color: #c00;
 }
 
 .backToSelectBtn {
