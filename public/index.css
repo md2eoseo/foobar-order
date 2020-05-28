@@ -293,6 +293,53 @@ button {
   background-color: #c00;
 }
 
+.paymentDetail.creditcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.paymentDetail.creditcard form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.paymentDetail.creditcard form input:not([type="submit"]) {
+  margin: 0.2rem;
+  padding-left: 0.3rem;
+  width: 65%;
+  height: 2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+.paymentDetail.creditcard form > div {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.paymentDetail.creditcard form input:not([type="submit"]):focus {
+  border: 2px solid #444;
+}
+
+.submitBtn {
+  width: 80%;
+  height: 3rem;
+  background-color: #0f0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: 0;
+  border-radius: 8px;
+  outline: none;
+}
+.submitBtn:hover {
+  background-color: #0c0;
+}
+
 /* OrderInfo.js */
 .OrderInfo {
   display: flex;
