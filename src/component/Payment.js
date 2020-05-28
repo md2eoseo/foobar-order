@@ -22,7 +22,7 @@ function Payment(
   const [expiry, setExpiry] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const [isNumberValid, setIsNumberValid] = useState(false);
+  // const [isNumberValid, setIsNumberValid] = useState(false);
   const [focus, setFocus] = useState("");
 
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
@@ -149,9 +149,9 @@ function Payment(
               focus={focus}
               name={name}
               number={number}
-              callback={(type, isValid) => {
-                setIsNumberValid(isValid);
-              }}
+              // callback={(type, isValid) => {
+              //   setIsNumberValid(isValid);
+              // }}
             />
             <form>
               <Cleave

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Cart from "./component/Cart";
 import List from "./component/List";
 import Payment from "./component/Payment";
+import useInterval from "./hooks/useInterval";
 
 const endpoint = "https://sojuapp.herokuapp.com/";
 
@@ -11,13 +12,36 @@ export default function App() {
   const refCheckoutBtn = useRef(null);
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [availableItems, setAvailableItems] = useState([]);
 
   useEffect(fetchData, []);
+  useEffect(fetchAvailableItems, []);
+  useInterval(fetchAvailableItems, 10000);
 
   function fetchData() {
     fetch(endpoint + "beertypes")
       .then((res) => res.json())
       .then((data) => setData(data));
+  }
+
+  function fetchAvailableItems() {
+    let i = 0;
+    const items = [];
+    fetch(endpoint)
+      .then((res) => res.json())
+      .then((data) => {
+        data.taps.forEach((tap) => {
+          if (items.length === 0) {
+            items.push(tap.beer);
+          } else {
+            for (i = 0; i < items.length; i++) {
+              if (items[i] === tap.beer) break;
+            }
+            if (i === items.length) items.push(tap.beer);
+          }
+        });
+        setAvailableItems(items);
+      });
   }
 
   // TODO: make function for passing the orders state
@@ -114,7 +138,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <List data={data} onClickAdd={onClickAdd} onClickDetail={onClickDetail} />
+      <List
+        data={data}
+        availableItems={availableItems}
+        onClickAdd={onClickAdd}
+        onClickDetail={onClickDetail}
+      />
       <Payment
         ref={{ refPayment, refPaymentSummary }}
         orders={orders}
