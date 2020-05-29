@@ -137,6 +137,34 @@ button {
   background-color: gray;
 }
 
+.detailBox {
+  position: fixed;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.detailBox .content {
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  padding: 1rem;
+  border: 3px solid green;
+  border-radius: 3rem;
+  background-color: #fff;
+}
+.modal_item_img {
+  float: left;
+  height: 50%;
+}
+.modal_closeBtn {
+  position: absolute;
+  right: 5.5rem;
+  top: 1rem;
+  font-size: 2.5rem;
+}
+
 /* Payment.js */
 .Payment {
   background-color: #fff;
