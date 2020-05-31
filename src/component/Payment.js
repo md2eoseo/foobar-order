@@ -95,7 +95,7 @@ function Payment(
   }
 
   return (
-    <>
+    <div>
       <div ref={refPayment} className="Payment">
         <button className="backToMainBtn" onClick={hidePayment}>
           <FontAwesomeIcon icon={faTimes} />
@@ -245,7 +245,7 @@ function Payment(
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

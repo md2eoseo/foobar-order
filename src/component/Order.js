@@ -5,7 +5,9 @@ import {
   faMinusSquare,
   faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
-const images = require.context("../images/", true);
+// const images = require.context("../images/", true);
+// const images_beers = require("../images/beers/*.png");
+import beers from "../images/beers";
 
 function Order(
   { name, amount, onClickDelete, onClickEditQuantity, getLabelByName },
@@ -16,7 +18,7 @@ function Order(
       <div className="order_info">
         <img
           className="order_img"
-          src={images(`./beers/${getLabelByName(name)}`)}
+          src={beers[getLabelByName(name).slice(0, -4)]}
           alt="order_img"
         />
         <div className="order_name">{name} </div>

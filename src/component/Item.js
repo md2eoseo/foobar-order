@@ -6,7 +6,11 @@ import {
   faExclamationCircle,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-const images = require.context("../images/", true);
+// const images = require.context("../images/", true);
+// const images_beers = require("../images/beers/");
+// const images_beer_bottles = require("../images/beer-bottles/");
+import beers from "../images/beers";
+import beer_bottles from "../images/beer-bottles";
 
 export default function Item({ item, available, onClickAdd }) {
   const refDetailBox = useRef(null);
@@ -18,11 +22,11 @@ export default function Item({ item, available, onClickAdd }) {
     refDetailBox.current.classList.add("hidden");
   }
   return (
-    <>
+    <div>
       <div className={available ? "Item" : "Item disable"}>
         <img
           className="item_img"
-          src={images(`./beers/${item.label}`)}
+          src={beers[item.label.slice(0, -4)]}
           alt="item_img"
         />
         <div className="item_name">{item.name}</div>
@@ -62,11 +66,11 @@ export default function Item({ item, available, onClickAdd }) {
         <div className="content">
           <img
             className="modal_item_img"
-            src={images(`./beer-bottles/${item.label}`)}
+            src={beer_bottles[item.label.slice(0, -4)]}
             alt="item_img"
           />
           {Object.entries(item.description).map(([key, value]) => (
-            <div>
+            <div key={key}>
               <span>{key} : </span>
               <span>{value}</span>
             </div>
@@ -78,6 +82,6 @@ export default function Item({ item, available, onClickAdd }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
