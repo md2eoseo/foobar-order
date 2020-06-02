@@ -106,19 +106,19 @@ button {
 }
 .item_name {
   justify-self: center;
-  font-size: 2.5rem;
+  font-size: 2.3vw;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
 .item_desc {
   justify-self: center;
-  font-size: 1.5rem;
+  font-size: 1.4vw;
   font-weight: 600;
   margin-bottom: 2rem;
 }
 .item_overall {
   justify-self: center;
-  font-size: 1.2rem;
+  font-size: 1.2vw;
   font-weight: 500;
   margin-bottom: 2rem;
 }
@@ -129,7 +129,7 @@ button {
 .item_btns > * {
   width: 70%;
   height: 4rem;
-  font-size: 1.6rem;
+  font-size: 1.5vw;
   font-weight: 500;
   border: 0;
   border-radius: 15px;
@@ -177,29 +177,32 @@ button {
   margin-right: 1.5rem;
 }
 .modal_item_name {
-  font-size: 3rem;
+  font-size: 2.3vw;
   font-weight: 800;
   margin-bottom: 0.8rem;
 }
 .modal_item_desc {
-  font-size: 2rem;
+  font-size: 1.4vw;
   font-weight: 600;
   margin-bottom: 2.5rem;
 }
 .modal_item_overall {
-  font-size: 1.5rem;
+  font-size: 1.2vw;
   font-weight: 500;
 }
 .modal_item_details {
-  overflow: scroll;
+  overflow-y: scroll;
   padding-bottom: 2rem;
+}
+.modal_item_details::-webkit-scrollbar {
+  display: block;
 }
 .modal_item_detail {
   margin-left: 1rem;
 }
 .modal_item_detail_title {
   margin: 1rem 0 0.5rem 0;
-  font-size: 1.5rem;
+  font-size: 1.2vw;
   font-weight: 600;
   color: blueviolet;
 }
@@ -210,7 +213,7 @@ button {
   position: absolute;
   right: 5.5rem;
   top: 1rem;
-  font-size: 5rem;
+  font-size: 3vw;
   cursor: pointer;
   width: 60px;
   height: 60px;
@@ -237,7 +240,7 @@ button {
 }
 
 .paymentText {
-  font-size: 3rem;
+  font-size: 2.8vw;
   font-weight: 700;
   margin: 6rem;
 }
@@ -270,7 +273,7 @@ button {
 }
 
 .paymentBtn > div {
-  font-size: 1.8rem;
+  font-size: 1.7vw;
   font-weight: 600;
 }
 
@@ -337,7 +340,7 @@ button {
   margin: 5px;
   padding: 4px 10px;
   background-color: transparent;
-  font-size: 3rem;
+  font-size: 3.5vw;
   background-color: #fff;
 }
 .backToMainBtn:hover,
@@ -370,18 +373,18 @@ button {
 }
 .paymentDetail.cash .text {
   margin-bottom: 5rem;
-  font-size: 2rem;
+  font-size: 2.3vw;
   font-weight: 600;
 }
 .paymentDetail.cash .btns > * {
-  margin: 0 1.5rem;
+  margin: 0 2vw;
   padding: 0.3em 0.8em;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.2em;
   box-shadow: 0 0.05em 0.25em rgba(0, 0, 0, 0.5);
   text-shadow: 0 -0.05em 0.05em rgba(0, 0, 0, 0.5);
   color: white;
-  font-size: 125%;
+  font-size: 2vw;
   line-height: 1.5;
 }
 .yesBtn {
@@ -399,7 +402,7 @@ button {
   position: relative;
 }
 .paymentDetail.mobilepay > div {
-  font-size: 2rem;
+  font-size: 2.3vw;
   font-weight: 600;
   margin-bottom: 3rem;
 }
@@ -407,14 +410,17 @@ button {
   width: 50%;
   margin: 2rem auto;
 }
+.paymentDetail.mobilepay form label {
+  font-size: 2.3vw;
+}
 .paymentDetail.mobilepay form input:not([type="submit"]) {
-  padding-left: 0.3rem;
   width: 100%;
   height: 2.5rem;
-  font-size: 1.3rem;
+  font-size: 2vw;
   font-weight: 600;
   border: 1px solid #ccc;
   border-radius: 8px;
+  padding: 0.5rem 0.3rem;
 }
 .paymentDetail.mobilepay form input:not([type="submit"]):focus {
   border: 2px solid #444;
@@ -439,10 +445,10 @@ button {
   margin: 0.2rem;
 }
 .paymentDetail.creditcard form input:not([type="submit"]) {
-  padding-left: 0.3rem;
+  padding: 0.5rem 0.3rem;
   width: 100%;
   height: 2.5rem;
-  font-size: 1.3rem;
+  font-size: 1.7vw;
   font-weight: 600;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -467,7 +473,7 @@ button {
   width: 20%;
   height: 3rem;
   background-color: #0f0;
-  font-size: 1.5rem;
+  font-size: 1.8vw;
   font-weight: 900;
   border: 0;
   border-radius: 8px;
@@ -487,6 +493,7 @@ button {
 .OrderInfo .order_quantity {
   text-align: right;
   margin-bottom: 1rem;
+  margin-right: 2rem;
 }
 
 /* Cart.js */
@@ -556,7 +563,7 @@ button {
 }
 .noBeerText {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.7vw;
   font-weight: 700;
 }
 
@@ -587,19 +594,19 @@ button {
 }
 
 .order_name {
-  font-size: 1.7rem;
+  font-size: 1.8vw;
   font-weight: 700;
   margin: 0.6rem;
 }
 
 .order_price {
-  font-size: 1.5rem;
+  font-size: 1.5vw;
   font-weight: 600;
 }
 
 .order_deleteBtn {
   color: white;
-  font-size: 1rem;
+  font-size: 1vw;
   padding: 5px 8px;
   border: 2px outset gray;
   border-radius: 10px;
@@ -614,7 +621,7 @@ button {
 
 .order_minusBtn {
   color: #ff0000;
-  font-size: 2rem;
+  font-size: 2vw;
   border: 0;
   background-color: transparent;
   transition: 0.5s;
@@ -624,7 +631,7 @@ button {
 }
 .order_plusBtn {
   color: #00ff00;
-  font-size: 2rem;
+  font-size: 2vw;
   border: 0;
   background-color: transparent;
   transition: 0.5s;
@@ -634,7 +641,7 @@ button {
 }
 
 .order_quantity {
-  font-size: 1.75rem;
+  font-size: 2vw;
   font-weight: 700;
   margin: 0 3px;
 }
@@ -680,7 +687,7 @@ button {
   margin: auto;
   width: 90%;
   height: 60%;
-  font-size: 1.6rem;
+  font-size: 2vw;
   font-weight: 600;
   border: 0;
   border-radius: 20px;
@@ -733,7 +740,7 @@ button {
   z-index: 5;
 }
 .cmText {
-  font-size: 2rem;
+  font-size: 1.8vw;
   font-weight: 600;
   text-align: center;
 }
@@ -742,7 +749,8 @@ button {
   width: 15%;
   height: 25%;
   padding: 0.5rem;
-  font-size: 1.8rem;
+  border-radius: 15px;
+  font-size: 1.5vw;
   font-weight: 900;
   background-color: #0f0;
 }
@@ -755,6 +763,27 @@ button {
 /* Hide scrollbar for IE and Edge */
 * {
   -ms-overflow-style: none;
+}
+
+/* Custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .hidden {
