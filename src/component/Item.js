@@ -29,37 +29,44 @@ export default function Item({ item, available, onClickAdd }) {
           src={beers[item.label.slice(0, -4)]}
           alt="item_img"
         />
-        <div className="item_name">{item.name}</div>
-        <div className="item_desc">Alc: {item.alc}% / 39,00kr</div>
-        <div className="item_btns">
-          {available ? (
+        <div className="item_content">
+          <div className="item_name">{item.name}</div>
+          <div className="item_desc">
+            {item.category} / Alc: {item.alc}% / 39,00kr
+          </div>
+          <div className="item_overall">
+            {item.description.overallImpression}
+          </div>
+          <div className="item_btns">
+            {available ? (
+              <button
+                className="addtocartBtn"
+                onClick={() => {
+                  onClickAdd(item.name);
+                }}
+              >
+                <FontAwesomeIcon icon={faCartPlus} /> Add to Cart
+              </button>
+            ) : (
+              <button
+                disabled
+                className="addtocartBtn"
+                onClick={() => {
+                  onClickAdd(item.name);
+                }}
+              >
+                <FontAwesomeIcon icon={faExclamationCircle} /> Out of Stock
+              </button>
+            )}
             <button
-              className="item_addtocartBtn"
+              className="readmoreBtn"
               onClick={() => {
-                onClickAdd(item.name);
+                onClickDetail(item.description.overallImpression);
               }}
             >
-              <FontAwesomeIcon icon={faCartPlus} /> Add to Cart
+              <FontAwesomeIcon icon={faInfoCircle} /> Read More
             </button>
-          ) : (
-            <button
-              disabled
-              className="item_addtocartBtn"
-              onClick={() => {
-                onClickAdd(item.name);
-              }}
-            >
-              <FontAwesomeIcon icon={faExclamationCircle} /> Out of Stock
-            </button>
-          )}
-          <button
-            className="item_readmoreBtn"
-            onClick={() => {
-              onClickDetail(item.description.overallImpression);
-            }}
-          >
-            <FontAwesomeIcon icon={faInfoCircle} /> Detail
-          </button>
+          </div>
         </div>
       </div>
       <div ref={refDetailBox} className="detailBox hidden">

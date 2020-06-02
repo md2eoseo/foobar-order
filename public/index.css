@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
 }
 
 button {
@@ -73,73 +74,100 @@ button {
   margin-top: 6%;
   padding: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 3%;
-  row-gap: 2%;
+  grid-template-columns: 1fr;
+  row-gap: 1%;
 }
 
 /* Item.js */
 .Item.disable {
-  background-color: gray;
-  opacity: 0.7;
+  background-color: #fbe3df;
 }
-.Item.disable .item_addtocartBtn {
+.Item.disable .addtocartBtn {
   cursor: not-allowed;
+  transform: scale(1);
+  color: #fa6648;
+  background-color: transparent;
 }
 
 .Item {
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   display: grid;
   grid-template-rows: auto;
+  grid-template-columns: 30% 70%;
   align-items: center;
   border: 2px solid black;
   border-radius: 15px;
-  background-color: orange;
-  transition: 0.5s ease;
+  background-color: #ffbc3f;
+  transition: 0.3s ease;
 }
 
 .Item:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   opacity: 1;
 }
 .Item.disable:hover {
   transform: scale(1);
-  opacity: 1;
 }
 
 .item_img {
   justify-self: center;
-  height: 200px;
+  max-width: 80%;
 }
-
+.item_content {
+  display: flex;
+  flex-direction: column;
+}
 .item_name {
   justify-self: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
 }
-
 .item_desc {
   justify-self: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
-
+.item_overall {
+  justify-self: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
 .item_btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 .item_btns > * {
-  width: 100%;
-  height: 2rem;
+  width: 70%;
+  height: 4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
   border: 0;
-  background-color: transparent;
+  border-radius: 15px;
   justify-self: center;
-  transition: 1s;
+  transition: 0.5s;
 }
-.item_btns > *:hover {
-  border-bottom: 2px solid black;
-  background-color: gray;
+.addtocartBtn {
+  background-color: #016b3a;
+  color: white;
+}
+.addtocartBtn:hover {
+  transform: scale(1.05);
+  background-color: #194739;
+}
+.readmoreBtn {
+  background-color: transparent;
+}
+.readmoreBtn:hover {
+  transform: scale(1.05);
 }
 
 .detailBox {
   position: fixed;
   left: 0;
+  top: 13%;
   width: 70%;
   height: 100%;
   z-index: 1;
