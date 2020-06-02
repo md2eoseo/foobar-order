@@ -15,6 +15,7 @@ export default function App() {
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [availableItems, setAvailableItems] = useState([]);
+  const [orderID, setOrderID] = useState("");
 
   useEffect(fetchData, []);
   useEffect(fetchAvailableItems, []);
@@ -132,7 +133,7 @@ export default function App() {
       })
       .then((data) => {
         if (data.status === 200) {
-          console.log(data.id);
+          setOrderID(data.id);
           showCompleteModal();
           hidePayment();
           setOrders([]);
@@ -153,8 +154,8 @@ export default function App() {
     <div>
       <div ref={refCMBtn} className="completeModal">
         <div className="cmText">
-          Thank you for ordering great beers 🤸‍♂️ <br />
-          We will let you know when the beers ready 🍺
+          Thank you for ordering great beers 🍺 <br />
+          Your Order Number is <span className="orderID">{orderID}</span>
         </div>
         <button className="cmBtn" onClick={hideCompleteModal}>
           OK!
