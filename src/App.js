@@ -154,7 +154,11 @@ export default function App() {
     <div>
       <div ref={refCMBtn} className="completeModal">
         <div className="cmText">
-          Thank you for ordering great beers 🍺 <br />
+          Thank you for ordering great beers
+          <span role="img" description="aria-label">
+            🍺
+          </span>
+          <br />
           Your Order Number is <span className="orderID">{orderID}</span>
         </div>
         <button className="cmBtn" onClick={hideCompleteModal}>
