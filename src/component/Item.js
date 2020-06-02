@@ -71,17 +71,49 @@ export default function Item({ item, available, onClickAdd }) {
       </div>
       <div ref={refDetailBox} className="detailBox hidden">
         <div className="content">
-          <img
-            className="modal_item_img"
-            src={beer_bottles[item.label.slice(0, -4)]}
-            alt="item_img"
-          />
-          {Object.entries(item.description).map(([key, value]) => (
-            <div key={key}>
-              <span>{key} : </span>
-              <span>{value}</span>
+          <div>
+            <img
+              className="modal_item_img"
+              src={beer_bottles[item.label.slice(0, -4)]}
+              alt="item_img"
+            />
+            <div>
+              <div className="modal_item_name">{item.name}</div>
+              <div className="modal_item_desc">
+                {item.category} / Alc: {item.alc}% / 39,00kr
+              </div>
+              <div className="modal_item_overall">
+                {item.description.overallImpression}
+              </div>
             </div>
-          ))}
+          </div>
+          <div className="modal_item_details">
+            <div className="modal_item_detail">
+              <div className="modal_item_detail_title">Aroma</div>
+              <div className="modal_item_detail_content">
+                {item.description.aroma}
+              </div>
+            </div>
+
+            <div className="modal_item_detail">
+              <div className="modal_item_detail_title">Appearance</div>
+              <div className="modal_item_detail_content">
+                {item.description.appearance}
+              </div>
+            </div>
+            <div className="modal_item_detail">
+              <div className="modal_item_detail_title">Flavor</div>
+              <div className="modal_item_detail_content">
+                {item.description.flavor}
+              </div>
+            </div>
+            <div className="modal_item_detail">
+              <div className="modal_item_detail_title">Mouthfeel</div>
+              <div className="modal_item_detail_content">
+                {item.description.mouthfeel}
+              </div>
+            </div>
+          </div>
           <FontAwesomeIcon
             className="modal_closeBtn"
             icon={faTimes}
