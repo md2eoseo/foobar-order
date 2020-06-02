@@ -7,9 +7,11 @@ import useInterval from "./hooks/useInterval";
 const endpoint = "https://sojuapp.herokuapp.com/";
 
 export default function App() {
+  const refApp = useRef(null);
   const refPayment = useRef(null);
   const refPaymentSummary = useRef(null);
   const refCheckoutBtn = useRef(null);
+  const refCMBtn = useRef(null);
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [availableItems, setAvailableItems] = useState([]);
@@ -44,7 +46,6 @@ export default function App() {
       });
   }
 
-  // TODO: make function for passing the orders state
   function onClickAdd(name) {
     const new_orders = [...orders];
     let i = 0;
@@ -130,35 +131,58 @@ export default function App() {
         else console.log("post failed!");
       })
       .then((data) => {
-        console.log(data);
-        hidePayment();
-        setOrders([]);
+        if (data.status === 200) {
+          console.log(data.id);
+          showCompleteModal();
+          hidePayment();
+          setOrders([]);
+        }
       });
   }
 
+  function showCompleteModal() {
+    refCMBtn.current.classList.add("fade");
+    refApp.current.classList.add("onComplete");
+  }
+  function hideCompleteModal() {
+    refCMBtn.current.classList.remove("fade");
+    refApp.current.classList.remove("onComplete");
+  }
+
   return (
-    <div className="App">
-      <List
-        data={data}
-        availableItems={availableItems}
-        onClickAdd={onClickAdd}
-        onClickDetail={onClickDetail}
-      />
-      <Payment
-        ref={{ refPayment, refPaymentSummary }}
-        orders={orders}
-        getLabelByName={getLabelByName}
-        hidePayment={hidePayment}
-        completePayment={completePayment}
-      />
-      <Cart
-        ref={refCheckoutBtn}
-        orders={orders}
-        onClickDelete={onClickDelete}
-        onClickEditQuantity={onClickEditQuantity}
-        getLabelByName={getLabelByName}
-        showUpPayment={showUpPayment}
-      />
+    <div>
+      <div ref={refCMBtn} className="completeModal">
+        <div className="cmText">
+          Thank you for ordering great beers 🤸‍♂️ <br />
+          We will let you know when the beers ready 🍺
+        </div>
+        <button className="cmBtn" onClick={hideCompleteModal}>
+          OK!
+        </button>
+      </div>
+      <div ref={refApp} className="App">
+        <List
+          data={data}
+          availableItems={availableItems}
+          onClickAdd={onClickAdd}
+          onClickDetail={onClickDetail}
+        />
+        <Payment
+          ref={{ refPayment, refPaymentSummary }}
+          orders={orders}
+          getLabelByName={getLabelByName}
+          hidePayment={hidePayment}
+          completePayment={completePayment}
+        />
+        <Cart
+          ref={refCheckoutBtn}
+          orders={orders}
+          onClickDelete={onClickDelete}
+          onClickEditQuantity={onClickEditQuantity}
+          getLabelByName={getLabelByName}
+          showUpPayment={showUpPayment}
+        />
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import Cleave from "cleave.js/react";
+import "../../node_modules/cleave.js/src/addons/phone-type-formatter.dk.js";
 import OrderInfo from "./OrderInfo";
 import mobilepayImg from "../images/payment/m-pay.png";
 import creditcardImg from "../images/payment/c-card.png";
@@ -24,6 +25,7 @@ function Payment(
   const [number, setNumber] = useState("");
   const [isNumberValid, setIsNumberValid] = useState(false);
   const [focus, setFocus] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
 
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
   const { refPayment, refPaymentSummary } = ref;
@@ -70,6 +72,21 @@ function Payment(
     refPaymentDetailCash.current.classList.add("hidden");
     refPaymentText.current.classList.remove("hidden");
     refPaymentDetails.current.classList.add("hidden");
+  }
+
+  function fakeLoading() {
+    // loading animation
+    setTimeout(() => {}, 5000);
+  }
+
+  function isValidPhonenumber(e) {
+    e.preventDefault();
+    let isValid = true;
+    if (!(phonenumber.length === 11)) {
+      console.log("Card Number Validation Error!");
+      isValid = false;
+    }
+    return isValid;
   }
 
   function isValidCreditcard(e) {
@@ -137,7 +154,41 @@ function Payment(
             ref={refPaymentDetailMobilepay}
             className="paymentDetail mobilepay hidden"
           >
-            mobilepay
+            <div>Send the request to your MobilePay</div>
+            <form>
+              <label htmlFor="phonenumber" className="labelPhonenumber">
+                Phone Number (+45)
+              </label>
+              <Cleave
+                type="tel"
+                name="phonenumber"
+                id="phonenumber"
+                value={phonenumber}
+                placeholder="00 00 00 00"
+                options={{ phone: true, phoneRegionCode: "dk" }}
+                onChange={(e) => {
+                  setPhonenumber(e.target.value);
+                }}
+              />
+              <input
+                className="submitBtn"
+                type="submit"
+                value="Send"
+                onClick={(e) => {
+                  if (isValidPhonenumber(e)) {
+                    fakeLoading();
+                    completePayment();
+                    goBackToSelect();
+                    setPhonenumber("");
+                    setNumber("");
+                    setName("");
+                    setExpiry("");
+                    setCVC("");
+                    setFocus("");
+                  }
+                }}
+              />
+            </form>
           </div>
           <div
             ref={refPaymentDetailCreditcard}
@@ -204,6 +255,7 @@ function Payment(
                   if (isValidCreditcard(e)) {
                     completePayment();
                     goBackToSelect();
+                    setPhonenumber("");
                     setNumber("");
                     setName("");
                     setExpiry("");
@@ -225,6 +277,12 @@ function Payment(
                 onClick={() => {
                   completePayment();
                   goBackToSelect();
+                  setPhonenumber("");
+                  setNumber("");
+                  setName("");
+                  setExpiry("");
+                  setCVC("");
+                  setFocus("");
                 }}
               >
                 Yes

@@ -15,7 +15,11 @@ export default function OrderInfo({ name, amount, getLabelByName }, ref) {
         <div className="order_name">{name} </div>
         <div className="order_price">x 39,00kr</div>
       </div>
-      <div className="order_quantity">{amount}🍺</div>
+      <div className="order_quantity">
+        <span role="img" description="aria-label">
+          {amount}🍺
+        </span>
+      </div>
       <hr />
     </div>
   );
