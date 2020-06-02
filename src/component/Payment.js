@@ -22,7 +22,7 @@ function Payment(
   const [expiry, setExpiry] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  // const [isNumberValid, setIsNumberValid] = useState(false);
+  const [isNumberValid, setIsNumberValid] = useState(false);
   const [focus, setFocus] = useState("");
 
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
@@ -75,22 +75,22 @@ function Payment(
   function isValidCreditcard(e) {
     e.preventDefault();
     let isValid = true;
-    // if (!isNumberValid) {
-    //   console.log("Card Number Validation Error!");
-    //   isValid = false;
-    // }
-    // if (name.length === 0) {
-    //   console.log("Name Validation Error!");
-    //   isValid = false;
-    // }
-    // if (expiry.length !== 5) {
-    //   console.log("Expiry Date Validation Error!");
-    //   isValid = false;
-    // }
-    // if (cvc.length !== 3) {
-    //   console.log("CVC Validation Error!");
-    //   isValid = false;
-    // }
+    if (!isNumberValid) {
+      console.log("Card Number Validation Error!");
+      isValid = false;
+    }
+    if (name.length === 0) {
+      console.log("Name Validation Error!");
+      isValid = false;
+    }
+    if (expiry.length !== 5) {
+      console.log("Expiry Date Validation Error!");
+      isValid = false;
+    }
+    if (cvc.length !== 3) {
+      console.log("CVC Validation Error!");
+      isValid = false;
+    }
     return isValid;
   }
 
@@ -144,14 +144,15 @@ function Payment(
             className="paymentDetail creditcard hidden"
           >
             <Cards
+              focused={focus}
               cvc={cvc}
               expiry={expiry}
-              focus={focus}
               name={name}
               number={number}
-              // callback={(type, isValid) => {
-              //   setIsNumberValid(isValid);
-              // }}
+              placeholders={{ name: "YOUR NAME" }}
+              callback={(type, isValid) => {
+                setIsNumberValid(isValid);
+              }}
             />
             <form>
               <Cleave
@@ -176,7 +177,7 @@ function Payment(
                   type="tel"
                   name="expiry"
                   value={expiry}
-                  placeholder="Expiry Date (MM/YY)"
+                  placeholder="Expiry (MM/YY)"
                   options={{
                     date: true,
                     datePattern: ["m", "y"],
@@ -198,7 +199,7 @@ function Payment(
               <input
                 className="submitBtn"
                 type="submit"
-                value="Complete the Payment"
+                value=">> Checkout"
                 onClick={(e) => {
                   if (isValidCreditcard(e)) {
                     completePayment();
@@ -207,6 +208,7 @@ function Payment(
                     setName("");
                     setExpiry("");
                     setCVC("");
+                    setFocus("");
                   }
                 }}
               />

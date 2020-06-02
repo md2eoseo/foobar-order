@@ -38,6 +38,14 @@ export default function Item({ item, available, onClickAdd }) {
             {item.description.overallImpression}
           </div>
           <div className="item_btns">
+            <button
+              className="readmoreBtn"
+              onClick={() => {
+                onClickDetail(item.description.overallImpression);
+              }}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} /> Read More
+            </button>
             {available ? (
               <button
                 className="addtocartBtn"
@@ -58,14 +66,6 @@ export default function Item({ item, available, onClickAdd }) {
                 <FontAwesomeIcon icon={faExclamationCircle} /> Out of Stock
               </button>
             )}
-            <button
-              className="readmoreBtn"
-              onClick={() => {
-                onClickDetail(item.description.overallImpression);
-              }}
-            >
-              <FontAwesomeIcon icon={faInfoCircle} /> Read More
-            </button>
           </div>
         </div>
       </div>

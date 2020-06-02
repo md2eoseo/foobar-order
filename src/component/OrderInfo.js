@@ -5,7 +5,7 @@ import beers from "../images/beers";
 
 export default function OrderInfo({ name, amount, getLabelByName }, ref) {
   return (
-    <div className="Order">
+    <div className="OrderInfo">
       <div className="order_info">
         <img
           className="order_img"
@@ -13,9 +13,9 @@ export default function OrderInfo({ name, amount, getLabelByName }, ref) {
           alt="order_img"
         />
         <div className="order_name">{name} </div>
-        <div className="order_price"></div>
+        <div className="order_price">x 39,00kr</div>
       </div>
-      <div className="order_quantity">39,00kr x {amount}🍺</div>
+      <div className="order_quantity">{amount}🍺</div>
       <hr />
     </div>
   );
