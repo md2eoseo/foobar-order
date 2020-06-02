@@ -541,15 +541,23 @@ button {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-.pleaseAddText {
+.orders {
+  height: 75%;
+}
+.noBeer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.noBeerImg {
+  width: 60%;
+}
+.noBeerText {
   text-align: center;
-  margin: 30% 0;
-  padding: 12% 3%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  border: 3px outset;
-  border-radius: 50px;
-  background-color: #ccc;
 }
 
 /* Order.js */

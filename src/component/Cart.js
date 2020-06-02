@@ -3,6 +3,7 @@ import Order from "./Order";
 import Checkout from "./Checkout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartArrowDown } from "@fortawesome/free-solid-svg-icons";
+import nobeer from "../images/beers/nobeer.png";
 
 const DISCOUNT_RATE = 0.75;
 const isDiscount = false;
@@ -40,10 +41,9 @@ function Cart(
       </h1>
       <div className="orders">
         {orders.length === 0 ? (
-          <div className="pleaseAddText">
-            Add beers
-            <br />
-            as much as you can drink...
+          <div className="noBeer">
+            <img className="noBeerImg" src={nobeer} alt="nobeer" />
+            <div className="noBeerText">Your cart is empty...</div>
           </div>
         ) : (
           orders.map((order, idx) => (
