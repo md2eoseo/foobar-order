@@ -79,10 +79,10 @@ button {
 }
 
 /* Item.js */
-.Item.disable {
+.Item.disabled {
   background-color: #fbe3df;
 }
-.Item.disable .addtocartBtn {
+.Item.disabled .addtocartBtn {
   cursor: not-allowed;
   transform: scale(1);
   color: #fa6648;
@@ -105,7 +105,7 @@ button {
   transform: scale(1.01);
   opacity: 1;
 }
-.Item.disable:hover {
+.Item.disabled:hover {
   transform: scale(1);
 }
 
@@ -164,7 +164,7 @@ button {
   transform: scale(1.05);
 }
 
-.detailBox {
+.DetailBox {
   position: fixed;
   left: 0;
   top: 13%;
@@ -173,7 +173,7 @@ button {
   z-index: 1;
   background-color: transparent;
 }
-.detailBox .content {
+.DetailBox .content {
   width: 90%;
   height: 80%;
   margin: auto;
