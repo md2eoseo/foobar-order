@@ -16,7 +16,7 @@ export default function App() {
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [availableItems, setAvailableItems] = useState([]);
-  const [orderID, setOrderID] = useState("");
+  const [orderID, setOrderID] = useState();
 
   useEffect(fetchData, []);
   useEffect(fetchAvailableItems, []);
@@ -117,6 +117,7 @@ export default function App() {
 
   function completePayment() {
     sendOrder();
+    hidePayment();
   }
 
   function sendOrder() {
@@ -136,7 +137,6 @@ export default function App() {
         if (data.status === 200) {
           setOrderID(data.id);
           showCompleteModal();
-          hidePayment();
           setOrders([]);
         }
       });
@@ -160,6 +160,7 @@ export default function App() {
       />
       <div ref={refApp} className="App">
         <List
+          orderID={orderID}
           data={data}
           availableItems={availableItems}
           onClickAdd={onClickAdd}

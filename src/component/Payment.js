@@ -111,6 +111,17 @@ function Payment(
     return isValid;
   }
 
+  function processPayment() {
+    completePayment();
+    goBackToSelect();
+    setPhonenumber("");
+    setNumber("");
+    setName("");
+    setExpiry("");
+    setCVC("");
+    setFocus("");
+  }
+
   return (
     <div>
       <div ref={refPayment} className="Payment">
@@ -177,14 +188,7 @@ function Payment(
                 onClick={(e) => {
                   if (isValidPhonenumber(e)) {
                     fakeLoading();
-                    completePayment();
-                    goBackToSelect();
-                    setPhonenumber("");
-                    setNumber("");
-                    setName("");
-                    setExpiry("");
-                    setCVC("");
-                    setFocus("");
+                    processPayment();
                   }
                 }}
               />
@@ -253,14 +257,7 @@ function Payment(
                 value=">> Checkout"
                 onClick={(e) => {
                   if (isValidCreditcard(e)) {
-                    completePayment();
-                    goBackToSelect();
-                    setPhonenumber("");
-                    setNumber("");
-                    setName("");
-                    setExpiry("");
-                    setCVC("");
-                    setFocus("");
+                    processPayment();
                   }
                 }}
               />
@@ -272,19 +269,7 @@ function Payment(
               <button className="noBtn" onClick={goBackToSelect}>
                 No
               </button>
-              <button
-                className="yesBtn"
-                onClick={() => {
-                  completePayment();
-                  goBackToSelect();
-                  setPhonenumber("");
-                  setNumber("");
-                  setName("");
-                  setExpiry("");
-                  setCVC("");
-                  setFocus("");
-                }}
-              >
+              <button className="yesBtn" onClick={processPayment}>
                 Yes
               </button>
             </div>

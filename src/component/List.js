@@ -3,27 +3,26 @@ import Item from "./Item";
 import logo from "../images/logo.svg";
 
 export default function List({
+  orderID,
   data,
   availableItems,
   onClickAdd,
   onClickDetail,
 }) {
-  let i = 0;
-  let j = 0;
   const [availability, setAvailability] = useState([]);
   useEffect(checkAvailable, [availableItems]);
 
   function checkAvailable() {
     const isAvailableArray = [];
-    for (i = 0; i < data.length; i++) {
-      for (j = 0; j < availableItems.length; j++) {
+    for (let i = 0; i < data.length; i++) {
+      for (let j = 0; j < availableItems.length; j++) {
         if (data[i].name === availableItems[j]) {
           isAvailableArray.push(true);
           break;
         }
-      }
-      if (j === availableItems.length) {
-        isAvailableArray.push(false);
+        if (j === availableItems.length - 1) {
+          isAvailableArray.push(false);
+        }
       }
     }
     setAvailability(isAvailableArray);
@@ -37,6 +36,7 @@ export default function List({
         {data.map((datum, idx) => (
           <Item
             key={datum.name}
+            orderID={orderID}
             available={availability[idx]}
             item={datum}
             onClickAdd={onClickAdd}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import DetailBox from "./DetailBox";
 import beers from "../images/beers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,16 +8,22 @@ import {
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Item({ item, available, onClickAdd }) {
+export default function Item({ orderID, item, available, onClickAdd }) {
   const refDetailBox = useRef(null);
+  const refModalItemDetails = useRef(null);
+
+  useEffect(onClickCloseBtn, [orderID]);
 
   function onClickDetailBtn() {
     refDetailBox.current.classList.remove("hidden");
   }
+
   function onClickCloseBtn() {
+    window.scrollTo(0, 0);
+    refModalItemDetails.current.scrollTo(0, 0);
     refDetailBox.current.classList.add("hidden");
   }
-  
+
   return (
     <div>
       <div className={available ? "Item" : "Item disabled"}>
@@ -61,6 +67,7 @@ export default function Item({ item, available, onClickAdd }) {
         item={item}
         onClickCloseBtn={onClickCloseBtn}
         refDetailBox={refDetailBox}
+        refModalItemDetails={refModalItemDetails}
       />
     </div>
   );

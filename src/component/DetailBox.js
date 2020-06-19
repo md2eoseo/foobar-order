@@ -3,7 +3,12 @@ import beer_bottles from "../images/beer-bottles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export default function DetailBox({ item, onClickCloseBtn, refDetailBox }) {
+export default function DetailBox({
+  item,
+  onClickCloseBtn,
+  refDetailBox,
+  refModalItemDetails,
+}) {
   return (
     <div ref={refDetailBox} className="DetailBox hidden">
       <div className="content">
@@ -23,7 +28,7 @@ export default function DetailBox({ item, onClickCloseBtn, refDetailBox }) {
             </div>
           </div>
         </div>
-        <div className="modal_item_details">
+        <div ref={refModalItemDetails} className="modal_item_details">
           <div className="modal_item_detail">
             <div className="modal_item_detail_title">Aroma</div>
             <div className="modal_item_detail_content">
