@@ -20,7 +20,11 @@ export default function Checkout({
             showUpPayment();
           }}
         >
-          Checkout {price}kr
+          Checkout {totalBeer}
+          <span role="img" aria-label="beers">
+            🍺
+          </span>{" "}
+          : {price}kr
         </button>
       )}
     </div>
