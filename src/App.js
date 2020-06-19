@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import CompleteModal from "./component/CompleteModal";
 import Cart from "./component/Cart";
 import List from "./component/List";
 import Payment from "./component/Payment";
@@ -11,7 +12,7 @@ export default function App() {
   const refPayment = useRef(null);
   const refPaymentSummary = useRef(null);
   const refCheckoutBtn = useRef(null);
-  const refCMBtn = useRef(null);
+  const refCompleteModal = useRef(null);
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [availableItems, setAvailableItems] = useState([]);
@@ -142,29 +143,21 @@ export default function App() {
   }
 
   function showCompleteModal() {
-    refCMBtn.current.classList.add("fade");
+    refCompleteModal.current.classList.add("fade");
     refApp.current.classList.add("onComplete");
   }
   function hideCompleteModal() {
-    refCMBtn.current.classList.remove("fade");
+    refCompleteModal.current.classList.remove("fade");
     refApp.current.classList.remove("onComplete");
   }
 
   return (
     <div>
-      <div ref={refCMBtn} className="completeModal">
-        <div className="cmText">
-          Thank you for ordering great beers
-          <span role="img" description="aria-label">
-            🍺
-          </span>
-          <br />
-          Your Order Number is <span className="orderID">{orderID}</span>
-        </div>
-        <button className="cmBtn" onClick={hideCompleteModal}>
-          OK!
-        </button>
-      </div>
+      <CompleteModal
+        orderID={orderID}
+        hideCompleteModal={hideCompleteModal}
+        refCompleteModal={refCompleteModal}
+      />
       <div ref={refApp} className="App">
         <List
           data={data}
