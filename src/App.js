@@ -173,7 +173,7 @@ export default function App() {
           completePayment={completePayment}
         />
         <Cart
-          ref={refCheckoutBtn}
+          refCheckoutBtn={refCheckoutBtn}
           orders={orders}
           onClickDelete={onClickDelete}
           onClickEditQuantity={onClickEditQuantity}

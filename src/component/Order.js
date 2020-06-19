@@ -5,14 +5,15 @@ import {
   faMinusSquare,
   faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
-// const images = require.context("../images/", true);
-// const images_beers = require("../images/beers/*.png");
 import beers from "../images/beers";
 
-function Order(
-  { name, amount, onClickDelete, onClickEditQuantity, getLabelByName },
-  ref
-) {
+export default function Order({
+  name,
+  amount,
+  onClickDelete,
+  onClickEditQuantity,
+  getLabelByName,
+}) {
   return (
     <div className="Order">
       <div className="order_info">
@@ -26,7 +27,6 @@ function Order(
       </div>
       <div className="order_edit">
         <button
-          ref={ref}
           className="order_deleteBtn"
           onClick={() => {
             onClickDelete(name);
@@ -58,5 +58,3 @@ function Order(
     </div>
   );
 }
-
-export default React.forwardRef(Order);

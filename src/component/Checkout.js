@@ -1,6 +1,11 @@
 import React from "react";
 
-function Checkout({ totalBeer, price, showUpPayment }, ref) {
+export default function Checkout({
+  totalBeer,
+  price,
+  showUpPayment,
+  refCheckoutBtn,
+}) {
   return (
     <div className="Checkout">
       {price === 0 ? (
@@ -9,7 +14,7 @@ function Checkout({ totalBeer, price, showUpPayment }, ref) {
         </button>
       ) : (
         <button
-          ref={ref}
+          ref={refCheckoutBtn}
           className="checkoutBtn"
           onClick={() => {
             showUpPayment();
@@ -21,5 +26,3 @@ function Checkout({ totalBeer, price, showUpPayment }, ref) {
     </div>
   );
 }
-
-export default React.forwardRef(Checkout);

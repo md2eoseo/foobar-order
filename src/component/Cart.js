@@ -8,10 +8,14 @@ import nobeer from "../images/beers/nobeer.png";
 const DISCOUNT_RATE = 0.75;
 const isDiscount = false;
 
-function Cart(
-  { orders, onClickDelete, onClickEditQuantity, getLabelByName, showUpPayment },
-  ref
-) {
+export default function Cart({
+  orders,
+  onClickDelete,
+  onClickEditQuantity,
+  getLabelByName,
+  showUpPayment,
+  refCheckoutBtn,
+}) {
   const [totalBeer, setTotalBeer] = useState(0);
   const [price, setPrice] = useState(0);
 
@@ -59,7 +63,7 @@ function Cart(
       </div>
 
       <Checkout
-        ref={ref}
+        refCheckoutBtn={refCheckoutBtn}
         totalBeer={totalBeer}
         price={price}
         showUpPayment={showUpPayment}
@@ -67,5 +71,3 @@ function Cart(
     </div>
   );
 }
-
-export default React.forwardRef(Cart);

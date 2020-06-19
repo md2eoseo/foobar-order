@@ -265,9 +265,9 @@ button {
 }
 
 .paymentBtn {
-  width: 15rem;
-  height: 15rem;
-  margin: 1rem;
+  width: 30%;
+  height: 100%;
+  margin: 2%;
   background-color: #ccc;
   border: 5px outset;
   border-radius: 1rem;
@@ -295,7 +295,7 @@ button {
   background-color: #fff;
   padding-top: 5%;
   width: 30%;
-  height: 85%;
+  height: 87%;
   position: fixed;
   right: -30%;
   z-index: 1;
@@ -360,10 +360,6 @@ button {
 .backToSelectBtn:hover {
   background-color: #eee;
   color: #c00;
-}
-
-.backToSelectBtn {
-  z-index: 2;
 }
 
 .paymentDetails {
@@ -562,7 +558,7 @@ button {
 }
 
 .orders {
-  height: 75%;
+  padding-bottom: 5vh;
 }
 .noBeer {
   height: 100%;
@@ -706,7 +702,6 @@ button {
   border-radius: 20px;
   background-color: #00ff00;
   transition: 0.5s;
-  z-index: 5;
 }
 
 .checkoutBtn:disabled {
@@ -750,7 +745,7 @@ button {
 }
 .CompleteModal.fade {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
 }
 .cmText {
   font-size: 1.8vw;
