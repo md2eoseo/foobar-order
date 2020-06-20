@@ -40,6 +40,7 @@ function Payment({
   const refPaymentDetailMobilepay = useRef(null);
   const refPaymentDetailCreditcard = useRef(null);
   const refPaymentDetailCash = useRef(null);
+  const refFakeLoading = useRef(null);
 
   const handleInputFocus = (e) => {
     setFocus(e.target.name);
@@ -78,16 +79,22 @@ function Payment({
     refPaymentDetails.current.classList.add("hidden");
   }
 
-  function fakeLoading() {
+  function fakeLoading(callback) {
     // loading animation
-    setTimeout(() => {}, 5000);
+    console.log("processing payment...");
+    refFakeLoading.current.classList.remove("hidden");
+    setTimeout(() => {
+      console.log("successful!");
+      refFakeLoading.current.classList.add("hidden");
+      callback();
+    }, 3000);
   }
 
   function isValidPhonenumber(e) {
     e.preventDefault();
     let isValid = true;
     if (!(phonenumber.length === 11)) {
-      console.log("Card Number Validation Error!");
+      console.log("Phone Number Validation Error!");
       isValid = false;
     }
     return isValid;
@@ -128,6 +135,9 @@ function Payment({
 
   return (
     <div>
+      <div ref={refFakeLoading} className="loading hidden">
+        Loading&#8230;
+      </div>
       <div ref={refPayment} className="Payment">
         <button className="backToMainBtn" onClick={hidePayment}>
           <FontAwesomeIcon icon={faTimes} />
@@ -191,8 +201,7 @@ function Payment({
                 value="Send"
                 onClick={(e) => {
                   if (isValidPhonenumber(e)) {
-                    fakeLoading();
-                    processPayment();
+                    fakeLoading(processPayment);
                   }
                 }}
               />
@@ -261,7 +270,7 @@ function Payment({
                 value=">> Checkout"
                 onClick={(e) => {
                   if (isValidCreditcard(e)) {
-                    processPayment();
+                    fakeLoading(processPayment);
                   }
                 }}
               />
