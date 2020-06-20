@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Item from "./Item";
 import logo from "../images/logo.svg";
 
-export default function List({
-  orderID,
-  data,
-  availableItems,
-  onClickAdd,
-  onClickDetail,
-}) {
+function List({ orderID, data, availableItems, onClickAdd, onClickDetail }) {
   const [availability, setAvailability] = useState([]);
   useEffect(checkAvailable, [availableItems]);
 
@@ -47,3 +42,13 @@ export default function List({
     </div>
   );
 }
+
+List.propTypes = {
+  orderID: PropTypes.number,
+  data: PropTypes.array,
+  availableItems: PropTypes.array,
+  onClickAdd: PropTypes.func,
+  onClickDetail: PropTypes.func,
+};
+
+export default List;

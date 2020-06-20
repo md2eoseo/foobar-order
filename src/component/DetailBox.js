@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import beer_bottles from "../images/beer-bottles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-export default function DetailBox({
+function DetailBox({
   item,
   onClickCloseBtn,
   refDetailBox,
@@ -64,3 +65,10 @@ export default function DetailBox({
     </div>
   );
 }
+
+DetailBox.propTypes = {
+  item: PropTypes.object,
+  onClickCloseBtn: PropTypes.func,
+};
+
+export default DetailBox;

@@ -1,11 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function Checkout({
-  totalBeer,
-  price,
-  showUpPayment,
-  refCheckoutBtn,
-}) {
+function Checkout({ totalBeer, price, showUpPayment, refCheckoutBtn }) {
   return (
     <div className="Checkout">
       {price === 0 ? (
@@ -30,3 +26,11 @@ export default function Checkout({
     </div>
   );
 }
+
+Checkout.propTypes = {
+  totalBeer: PropTypes.number,
+  price: PropTypes.number,
+  showUpPayment: PropTypes.func,
+};
+
+export default Checkout;

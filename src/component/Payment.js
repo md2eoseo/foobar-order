@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import PropTypes from "prop-types";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import Cleave from "cleave.js/react";
@@ -15,10 +16,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // https://stackoverflow.com/questions/61192450/useref-hook-on-a-custom-component
-function Payment(
-  { orders, getLabelByName, hidePayment, completePayment },
-  ref
-) {
+function Payment({
+  orders,
+  getLabelByName,
+  hidePayment,
+  completePayment,
+  refPayment,
+  refPaymentSummary,
+}) {
   const [cvc, setCVC] = useState("");
   const [expiry, setExpiry] = useState("");
   const [name, setName] = useState("");
@@ -28,7 +33,6 @@ function Payment(
   const [phonenumber, setPhonenumber] = useState("");
 
   // https://stackoverflow.com/questions/53561913/react-forwarding-multiple-refs
-  const { refPayment, refPaymentSummary } = ref;
   const refPaymentBtns = useRef(null);
   const refBackToSelectBtn = useRef(null);
   const refPaymentText = useRef(null);
@@ -294,4 +298,11 @@ function Payment(
   );
 }
 
-export default React.forwardRef(Payment);
+Payment.propTypes = {
+  orders: PropTypes.array,
+  getLabelByName: PropTypes.func,
+  hidePayment: PropTypes.func,
+  completePayment: PropTypes.func,
+};
+
+export default Payment;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrashAlt,
@@ -7,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import beers from "../images/beers";
 
-export default function Order({
+function Order({
   name,
   amount,
   onClickDelete,
@@ -58,3 +59,13 @@ export default function Order({
     </div>
   );
 }
+
+Order.propTypes = {
+  name: PropTypes.string,
+  amount: PropTypes.number,
+  onClickDelete: PropTypes.func,
+  onClickEditQuantity: PropTypes.func,
+  getLabelByName: PropTypes.func,
+};
+
+export default Order;

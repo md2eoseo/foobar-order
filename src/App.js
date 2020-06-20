@@ -7,7 +7,7 @@ import useInterval from "./hooks/useInterval";
 
 const endpoint = "https://sojuapp.herokuapp.com/";
 
-export default function App() {
+function App() {
   const refApp = useRef(null);
   const refPayment = useRef(null);
   const refPaymentSummary = useRef(null);
@@ -167,11 +167,12 @@ export default function App() {
           onClickDetail={onClickDetail}
         />
         <Payment
-          ref={{ refPayment, refPaymentSummary }}
           orders={orders}
           getLabelByName={getLabelByName}
           hidePayment={hidePayment}
           completePayment={completePayment}
+          refPayment={refPayment}
+          refPaymentSummary={refPaymentSummary}
         />
         <Cart
           refCheckoutBtn={refCheckoutBtn}
@@ -185,3 +186,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

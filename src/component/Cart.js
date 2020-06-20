@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import Order from "./Order";
 import Checkout from "./Checkout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +9,7 @@ import nobeer from "../images/beers/nobeer.png";
 const DISCOUNT_RATE = 0.75;
 const isDiscount = false;
 
-export default function Cart({
+function Cart({
   orders,
   onClickDelete,
   onClickEditQuantity,
@@ -71,3 +72,13 @@ export default function Cart({
     </div>
   );
 }
+
+Cart.propTypes = {
+  orders: PropTypes.array,
+  onClickDelete: PropTypes.func,
+  onClickEditQuantity: PropTypes.func,
+  getLabelByName: PropTypes.func,
+  showUpPayment: PropTypes.func,
+};
+
+export default Cart;

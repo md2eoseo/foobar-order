@@ -1,10 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function CompleteModal({
-  orderID,
-  hideCompleteModal,
-  refCompleteModal,
-}) {
+function CompleteModal({ orderID, hideCompleteModal, refCompleteModal }) {
   return (
     <div ref={refCompleteModal} className="CompleteModal">
       <div className="cmText">
@@ -21,3 +18,10 @@ export default function CompleteModal({
     </div>
   );
 }
+
+CompleteModal.propTypes = {
+  orderID: PropTypes.number,
+  hideCompleteModal: PropTypes.func,
+};
+
+export default CompleteModal;

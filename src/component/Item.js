@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import DetailBox from "./DetailBox";
 import beers from "../images/beers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,7 +9,7 @@ import {
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Item({ orderID, item, available, onClickAdd }) {
+function Item({ orderID, item, available, onClickAdd }) {
   const refDetailBox = useRef(null);
   const refModalItemDetails = useRef(null);
 
@@ -72,3 +73,12 @@ export default function Item({ orderID, item, available, onClickAdd }) {
     </div>
   );
 }
+
+Item.propTypes = {
+  orderID: PropTypes.number,
+  item: PropTypes.object,
+  available: PropTypes.bool,
+  onClickAdd: PropTypes.func,
+};
+
+export default Item;

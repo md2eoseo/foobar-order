@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import beers from "../images/beers";
 
-export default function OrderInfo({ name, amount, getLabelByName }) {
+function OrderInfo({ name, amount, getLabelByName }) {
   return (
     <div className="OrderInfo">
       <div className="order_info">
@@ -22,3 +23,11 @@ export default function OrderInfo({ name, amount, getLabelByName }) {
     </div>
   );
 }
+
+OrderInfo.propTypes = {
+  name: PropTypes.string,
+  amount: PropTypes.number,
+  getLabelByName: PropTypes.func,
+};
+
+export default OrderInfo;
