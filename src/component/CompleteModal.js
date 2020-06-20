@@ -10,7 +10,10 @@ function CompleteModal({ orderID, hideCompleteModal, refCompleteModal }) {
           🍺
         </span>
         <br />
-        Your Order Number is <span className="orderID">{orderID}</span>
+        {orderID.method === "cash"
+          ? "Please prepare the cash. The waiter will come to your table. "
+          : ""}
+        Your Order Number is <span className="orderID">{orderID.id}</span>
       </div>
       <button className="cmBtn" onClick={hideCompleteModal}>
         OK!
@@ -20,7 +23,7 @@ function CompleteModal({ orderID, hideCompleteModal, refCompleteModal }) {
 }
 
 CompleteModal.propTypes = {
-  orderID: PropTypes.number,
+  orderID: PropTypes.object,
   hideCompleteModal: PropTypes.func,
 };
 

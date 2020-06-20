@@ -16,7 +16,7 @@ function App() {
   const [data, setData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [availableItems, setAvailableItems] = useState([]);
-  const [orderID, setOrderID] = useState();
+  const [orderID, setOrderID] = useState({ id: null, method: null });
 
   useEffect(fetchData, []);
   useEffect(fetchAvailableItems, []);
@@ -115,12 +115,12 @@ function App() {
     refCheckoutBtn.current.classList.remove("onPayment");
   }
 
-  function completePayment() {
-    sendOrder();
+  function completePayment(method) {
+    sendOrder(method);
     hidePayment();
   }
 
-  function sendOrder() {
+  function sendOrder(method) {
     const postData = JSON.stringify(orders);
     fetch(endpoint + "order", {
       method: "post",
@@ -135,7 +135,7 @@ function App() {
       })
       .then((data) => {
         if (data.status === 200) {
-          setOrderID(data.id);
+          setOrderID({ id: data.id, method: method });
           showCompleteModal();
           setOrders([]);
         }

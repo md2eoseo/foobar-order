@@ -75,7 +75,7 @@ function Item({ orderID, item, available, onClickAdd }) {
 }
 
 Item.propTypes = {
-  orderID: PropTypes.number,
+  orderID: PropTypes.object,
   item: PropTypes.object,
   available: PropTypes.bool,
   onClickAdd: PropTypes.func,

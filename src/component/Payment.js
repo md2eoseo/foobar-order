@@ -122,8 +122,8 @@ function Payment({
     return isValid;
   }
 
-  function processPayment() {
-    completePayment();
+  function processPayment(method) {
+    completePayment(method);
     goBackToSelect();
     setPhonenumber("");
     setNumber("");
@@ -201,7 +201,9 @@ function Payment({
                 value="Send"
                 onClick={(e) => {
                   if (isValidPhonenumber(e)) {
-                    fakeLoading(processPayment);
+                    fakeLoading(() => {
+                      processPayment("mobilepay");
+                    });
                   }
                 }}
               />
@@ -270,7 +272,9 @@ function Payment({
                 value=">> Checkout"
                 onClick={(e) => {
                   if (isValidCreditcard(e)) {
-                    fakeLoading(processPayment);
+                    fakeLoading(() => {
+                      processPayment("creditcard");
+                    });
                   }
                 }}
               />
@@ -282,7 +286,12 @@ function Payment({
               <button className="noBtn" onClick={goBackToSelect}>
                 No
               </button>
-              <button className="yesBtn" onClick={processPayment}>
+              <button
+                className="yesBtn"
+                onClick={() => {
+                  processPayment("cash");
+                }}
+              >
                 Yes
               </button>
             </div>

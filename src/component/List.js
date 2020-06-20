@@ -44,7 +44,7 @@ function List({ orderID, data, availableItems, onClickAdd, onClickDetail }) {
 }
 
 List.propTypes = {
-  orderID: PropTypes.number,
+  orderID: PropTypes.object,
   data: PropTypes.array,
   availableItems: PropTypes.array,
   onClickAdd: PropTypes.func,
