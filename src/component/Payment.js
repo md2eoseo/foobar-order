@@ -4,26 +4,14 @@ import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import Cleave from "cleave.js/react";
 import "../../node_modules/cleave.js/src/addons/phone-type-formatter.dk.js";
-import OrderInfo from "./OrderInfo";
 import mobilepayImg from "../images/payment/m-pay.png";
 import creditcardImg from "../images/payment/c-card.png";
 import cashImg from "../images/payment/cash.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartArrowDown,
-  faLongArrowAltLeft,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowAltLeft, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // https://stackoverflow.com/questions/61192450/useref-hook-on-a-custom-component
-function Payment({
-  orders,
-  getLabelByName,
-  hidePayment,
-  completePayment,
-  refPayment,
-  refPaymentSummary,
-}) {
+function Payment({ hidePayment, completePayment }) {
   const [cvc, setCVC] = useState("");
   const [expiry, setExpiry] = useState("");
   const [name, setName] = useState("");
@@ -138,7 +126,7 @@ function Payment({
       <div ref={refFakeLoading} className="loading hidden">
         Loading&#8230;
       </div>
-      <div ref={refPayment} className="Payment">
+      <div className="Payment">
         <button className="backToMainBtn" onClick={hidePayment}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
@@ -298,27 +286,11 @@ function Payment({
           </div>
         </div>
       </div>
-      <div ref={refPaymentSummary} className="paymentSummary">
-        <h1 className="paymentSummary_label">
-          <FontAwesomeIcon icon={faCartArrowDown} /> Summary
-        </h1>
-        <div className="orders">
-          {orders.map((order, idx) => (
-            <OrderInfo
-              key={order.name}
-              {...order}
-              getLabelByName={getLabelByName}
-            />
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
 
 Payment.propTypes = {
-  orders: PropTypes.array,
-  getLabelByName: PropTypes.func,
   hidePayment: PropTypes.func,
   completePayment: PropTypes.func,
 };

@@ -336,13 +336,6 @@ button {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-.Payment.onPayment {
-  left: 0;
-}
-.paymentSummary.onPayment {
-  right: 0;
-}
-
 .backToMainBtn,
 .backToSelectBtn {
   position: absolute;
@@ -492,19 +485,6 @@ button {
   background-color: #0c0;
 }
 
-/* OrderInfo.js */
-.OrderInfo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.OrderInfo .order_quantity {
-  text-align: right;
-  margin-bottom: 1rem;
-  margin-right: 2rem;
-}
-
 /* Cart.js */
 .Cart {
   width: var(--cart-width);
@@ -558,7 +538,7 @@ button {
 }
 
 .orders {
-  padding-bottom: 5vh;
+  padding-bottom: 3vh;
 }
 .noBeer {
   height: 100%;
@@ -588,8 +568,14 @@ button {
   padding: 0.8rem 0.5rem;
 }
 
+.order_subinfo {
+  position: relative;
+}
+
 .order_edit {
   justify-content: space-between;
+  opacity: 1;
+  transition: ease 0.7s;
 }
 .order_edit_quantity {
   width: 25%;
@@ -598,28 +584,43 @@ button {
   align-items: baseline;
 }
 
+.order_summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  text-align: right;
+  font-size: 2.2vw;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  opacity: 0;
+  transition: ease 0.7s;
+}
+
 .order_img {
   height: 3rem;
 }
 
 .order_name {
-  font-size: 1.8vw;
+  font-size: 2vw;
   font-weight: 700;
   margin: 0.6rem;
 }
 
 .order_price {
-  font-size: 1.5vw;
+  font-size: 1.6vw;
   font-weight: 600;
 }
 
 .order_deleteBtn {
   color: white;
-  font-size: 1vw;
+  font-size: 1.2vw;
   padding: 5px 8px;
   border: 2px outset gray;
   border-radius: 10px;
-  background-color: #cc0000;
+  background-color: #c00;
   justify-self: center;
   transition: 0.5s;
 }
@@ -628,29 +629,27 @@ button {
   border: 2px inset gray;
 }
 
-.order_minusBtn {
-  color: #ff0000;
-  font-size: 2vw;
+.order_quantityBtn {
+  font-size: 2.2vw;
   border: 0;
   background-color: transparent;
   transition: 0.5s;
 }
-.order_minusBtn:hover {
-  color: #cc0000;
+.minusBtn {
+  color: #f00;
 }
-.order_plusBtn {
-  color: #00ff00;
-  font-size: 2vw;
-  border: 0;
-  background-color: transparent;
-  transition: 0.5s;
+.minusBtn:hover {
+  color: #c00;
 }
-.order_plusBtn:hover {
-  color: #00cc00;
+.plusBtn {
+  color: #0f0;
+}
+.plusBtn:hover {
+  color: #0c0;
 }
 
 .order_quantity {
-  font-size: 2vw;
+  font-size: 2.2vw;
   font-weight: 700;
   margin: 0 3px;
 }
@@ -715,14 +714,6 @@ button {
 
 .checkoutBtn:hover {
   background-color: #0c0;
-}
-
-.checkoutBtn.onPayment {
-  background-color: transparent;
-  border-bottom: 3px solid black;
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 2px;
-  cursor: default;
 }
 
 .CompleteModal {
@@ -930,4 +921,27 @@ button {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* .onPayment css */
+.onPayment .Payment {
+  left: 0;
+}
+
+.onPayment .checkoutBtn {
+  background-color: transparent;
+  border-bottom: 3px solid black;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  cursor: default;
+}
+
+.onPayment .order_edit {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.onPayment .order_summary {
+  visibility: visible;
+  opacity: 1;
 }

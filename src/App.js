@@ -105,14 +105,10 @@ function App() {
   }
 
   function showUpPayment() {
-    refPayment.current.classList.add("onPayment");
-    refPaymentSummary.current.classList.add("onPayment");
-    refCheckoutBtn.current.classList.add("onPayment");
+    refApp.current.classList.add("onPayment");
   }
   function hidePayment() {
-    refPayment.current.classList.remove("onPayment");
-    refPaymentSummary.current.classList.remove("onPayment");
-    refCheckoutBtn.current.classList.remove("onPayment");
+    refApp.current.classList.remove("onPayment");
   }
 
   function completePayment(method) {

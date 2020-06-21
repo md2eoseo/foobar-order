@@ -26,33 +26,40 @@ function Order({
         <div className="order_name">{name} </div>
         <div className="order_price">x 39,00kr</div>
       </div>
-      <div className="order_edit">
-        <button
-          className="order_deleteBtn"
-          onClick={() => {
-            onClickDelete(name);
-          }}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </button>
-        <div className="order_edit_quantity">
+      <div className="order_subinfo">
+        <div className="order_edit">
           <button
-            className="order_minusBtn"
+            className="order_deleteBtn"
             onClick={() => {
-              onClickEditQuantity(name, -1);
+              onClickDelete(name);
             }}
           >
-            <FontAwesomeIcon icon={faMinusSquare} />
+            <FontAwesomeIcon icon={faTrashAlt} />
           </button>
-          <div className="order_quantity">{amount}</div>
-          <button
-            className="order_plusBtn"
-            onClick={() => {
-              onClickEditQuantity(name, 1);
-            }}
-          >
-            <FontAwesomeIcon icon={faPlusSquare} />
-          </button>
+          <div className="order_edit_quantity">
+            <button
+              className="order_quantityBtn minusBtn"
+              onClick={() => {
+                onClickEditQuantity(name, -1);
+              }}
+            >
+              <FontAwesomeIcon icon={faMinusSquare} />
+            </button>
+            <div className="order_quantity">{amount}</div>
+            <button
+              className="order_quantityBtn plusBtn"
+              onClick={() => {
+                onClickEditQuantity(name, 1);
+              }}
+            >
+              <FontAwesomeIcon icon={faPlusSquare} />
+            </button>
+          </div>
+        </div>
+        <div className="order_summary">
+          <span role="img" aria-label="beers">
+            {amount}🍺
+          </span>
         </div>
       </div>
       <hr />
