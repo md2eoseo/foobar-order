@@ -3,7 +3,6 @@ import CompleteModal from "./component/CompleteModal";
 import Cart from "./component/Cart";
 import List from "./component/List";
 import Payment from "./component/Payment";
-import useInterval from "./hooks/useInterval";
 
 const endpoint = "https://sojuapp.herokuapp.com/";
 
@@ -11,38 +10,36 @@ function App() {
   const refApp = useRef(null);
   const refCheckoutBtn = useRef(null);
   const refCompleteModal = useRef(null);
-  const [data, setData] = useState([]);
+  const [info, setInfo] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [availableItems, setAvailableItems] = useState([]);
   const [orderID, setOrderID] = useState({ id: null, method: null });
 
-  useEffect(fetchData, []);
-  useEffect(fetchAvailableItems, []);
-  useInterval(fetchAvailableItems, 10000);
+  useEffect(fetchInfo, []);
 
-  function fetchData() {
+  function fetchInfo() {
     fetch(endpoint + "beertypes")
       .then((res) => res.json())
-      .then((data) => setData(data));
+      .then((data) => {
+        fetchTaps(data);
+      });
   }
 
-  function fetchAvailableItems() {
-    let i = 0;
-    const items = [];
+  function fetchTaps(info) {
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => {
-        data.taps.forEach((tap) => {
-          if (items.length === 0) {
-            items.push(tap.beer);
-          } else {
-            for (i = 0; i < items.length; i++) {
-              if (items[i] === tap.beer) break;
+        const new_info = info;
+        new_info.forEach((item) => {
+          for (let i = 0; i < data.taps.length; i++) {
+            if (item.name === data.taps[i].beer) {
+              item.onTap = true;
+              break;
+            } else {
+              item.onTap = false;
             }
-            if (i === items.length) items.push(tap.beer);
           }
         });
-        setAvailableItems(items);
+        setInfo(new_info);
       });
   }
 
@@ -96,7 +93,7 @@ function App() {
 
   function getLabelByName(name) {
     let label = "";
-    data.forEach((datum) => {
+    info.forEach((datum) => {
       if (name === datum.name) label = datum.label;
     });
     return label;
@@ -112,6 +109,7 @@ function App() {
   function completePayment(method) {
     sendOrder(method);
     hidePayment();
+    window.scrollTo(0, 0);
   }
 
   function sendOrder(method) {
@@ -155,8 +153,7 @@ function App() {
       <div ref={refApp} className="App">
         <List
           orderID={orderID}
-          data={data}
-          availableItems={availableItems}
+          info={info}
           onClickAdd={onClickAdd}
           onClickDetail={onClickDetail}
         />

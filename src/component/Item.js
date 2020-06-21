@@ -9,7 +9,7 @@ import {
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Item({ orderID, item, available, onClickAdd }) {
+function Item({ orderID, item, onClickAdd }) {
   const refDetailBox = useRef(null);
   const refModalItemDetails = useRef(null);
 
@@ -20,14 +20,13 @@ function Item({ orderID, item, available, onClickAdd }) {
   }
 
   function onClickCloseBtn() {
-    window.scrollTo(0, 0);
     refModalItemDetails.current.scrollTo(0, 0);
     refDetailBox.current.classList.add("hidden");
   }
 
   return (
     <div>
-      <div className={available ? "Item" : "Item disabled"}>
+      <div className={item.onTap ? "Item" : "Item disabled"}>
         <img
           className="item_img"
           src={beers[item.label.slice(0, -4)]}
@@ -46,10 +45,10 @@ function Item({ orderID, item, available, onClickAdd }) {
               <FontAwesomeIcon icon={faInfoCircle} /> Read More
             </button>
             <button
-              disabled={available ? false : true}
+              disabled={item.onTap ? false : true}
               className="addtocartBtn"
               onClick={
-                available
+                item.onTap
                   ? () => {
                       onClickAdd(item.name);
                     }
@@ -57,9 +56,9 @@ function Item({ orderID, item, available, onClickAdd }) {
               }
             >
               <FontAwesomeIcon
-                icon={available ? faCartPlus : faExclamationCircle}
+                icon={item.onTap ? faCartPlus : faExclamationCircle}
               />{" "}
-              {available ? "Add to Cart" : "Out of Stock"}
+              {item.onTap ? "Add to Cart" : "Out of Stock"}
             </button>
           </div>
         </div>
@@ -77,7 +76,6 @@ function Item({ orderID, item, available, onClickAdd }) {
 Item.propTypes = {
   orderID: PropTypes.object,
   item: PropTypes.object,
-  available: PropTypes.bool,
   onClickAdd: PropTypes.func,
 };
 

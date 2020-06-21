@@ -3,36 +3,33 @@ import PropTypes from "prop-types";
 import Item from "./Item";
 import logo from "../images/logo.svg";
 
-function List({ orderID, data, availableItems, onClickAdd, onClickDetail }) {
-  const [availability, setAvailability] = useState([]);
-  useEffect(checkAvailable, [availableItems]);
+function List({ orderID, info, onClickAdd, onClickDetail }) {
+  const [orderedItems, setOrderedItems] = useState([]);
+  useEffect(orderItems, [info]);
 
-  function checkAvailable() {
-    const isAvailableArray = [];
-    for (let i = 0; i < data.length; i++) {
-      for (let j = 0; j < availableItems.length; j++) {
-        if (data[i].name === availableItems[j]) {
-          isAvailableArray.push(true);
-          break;
-        }
-        if (j === availableItems.length - 1) {
-          isAvailableArray.push(false);
-        }
+  function orderItems() {
+    let onTaps = [];
+    let notOnTaps = [];
+    for (let i = 0; i < info.length; i++) {
+      if (!info[i].onTap) {
+        notOnTaps = notOnTaps.concat(info[i]);
+      } else {
+        onTaps = onTaps.concat(info[i]);
       }
     }
-    setAvailability(isAvailableArray);
+    setOrderedItems(onTaps.concat(notOnTaps));
   }
+
   return (
     <div className="List">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
       <div className="items">
-        {data.map((datum, idx) => (
+        {orderedItems.map((datum) => (
           <Item
             key={datum.name}
             orderID={orderID}
-            available={availability[idx]}
             item={datum}
             onClickAdd={onClickAdd}
             onClickDetail={onClickDetail}
@@ -45,8 +42,7 @@ function List({ orderID, data, availableItems, onClickAdd, onClickDetail }) {
 
 List.propTypes = {
   orderID: PropTypes.object,
-  data: PropTypes.array,
-  availableItems: PropTypes.array,
+  info: PropTypes.array,
   onClickAdd: PropTypes.func,
   onClickDetail: PropTypes.func,
 };
