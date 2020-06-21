@@ -9,8 +9,6 @@ const endpoint = "https://sojuapp.herokuapp.com/";
 
 function App() {
   const refApp = useRef(null);
-  const refPayment = useRef(null);
-  const refPaymentSummary = useRef(null);
   const refCheckoutBtn = useRef(null);
   const refCompleteModal = useRef(null);
   const [data, setData] = useState([]);
@@ -167,8 +165,6 @@ function App() {
           getLabelByName={getLabelByName}
           hidePayment={hidePayment}
           completePayment={completePayment}
-          refPayment={refPayment}
-          refPaymentSummary={refPaymentSummary}
         />
         <Cart
           refCheckoutBtn={refCheckoutBtn}
